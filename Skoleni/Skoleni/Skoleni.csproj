@@ -36,4 +36,13 @@
     <None Include="wwwroot\css\jquery-ui.theme.min.css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="DB\SkoleniDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="DB\SkoleniDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
