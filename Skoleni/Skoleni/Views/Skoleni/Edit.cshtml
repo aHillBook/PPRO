@@ -1,5 +1,5 @@
 ﻿@using Skoleni.Models;
-@model Mistnost
+@model Skoleni
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -9,7 +9,7 @@
     <div class="pozadi-cerveno-fialova">
         <div class="nadpis">
             <div class="nadpis-blok">
-                <h1 class="nadpis-blok-h1">Nová místnost</h1>
+                <h1 class="nadpis-blok-h1">Editace školení</h1>
             </div>
         </div>
         <div class="vyvysenyBod"></div>
@@ -18,15 +18,30 @@
 
 <div id="shortBlok">
     <div style="padding: 10px;">
-        <form asp-action="Create">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <div class="mN">
                     <label asp-for="nazev">Název</label>
+                    <input type="hidden" asp-for="idSkoleni" />
                 </div>
                 <div class="mD">
                     <input asp-for="nazev" class="textPole" />
                     <span asp-validation-for="nazev" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="popis">Popis</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="popis" class="textPole" />
+                    <span asp-validation-for="popis" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="skolitel">Školitel</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="skolitel" class="textPole" />
+                    <span asp-validation-for="skolitel" class="text-danger"></span>
                 </div>
             </div>
             <div id="tlacitkaPopisku">
