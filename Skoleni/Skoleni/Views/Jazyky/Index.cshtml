@@ -1,0 +1,60 @@
+﻿@using Skoleni.Models
+@model IEnumerable<Jazyk>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-cerveno-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Seznam jazyků</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+<p>
+    <div id="novy">
+        <a asp-action="Create"><div id="novyIkona"></div></a>
+    </div>
+</p>
+
+<div class="seznamKmu">
+    <table id="tabulkaKmu">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Možnosti</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="hlavniRadek">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nazev)
+                    </td>
+                    <td style="display: flex; margin-top:-1px;padding-top:10px;">
+                        <div id="edit">
+                            <a asp-action="Edit" asp-route-id="@item.idJazyka"><div id="editIkona"></div></a> 
+                        </div>
+
+                        <div id="detail">
+                            <a asp-action="Details" asp-route-id="@item.idJazyka"><div id="detailIkona"></div></a>
+                        </div>
+                        <div id="delete">
+                            <a asp-action="Delete" asp-route-id="@item.idJazyka"><div id="deleteIkona"></div></a>
+                        </div>
+                    </td>
+        </tr>
+    }
+            </tbody>
+            </table>
+        </div>
+
+
+
+
+

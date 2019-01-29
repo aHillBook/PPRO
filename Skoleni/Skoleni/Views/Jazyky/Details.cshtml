@@ -1,0 +1,42 @@
+﻿@using Skoleni.Models
+@model Jazyk
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-cerveno-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Podrobnosti - jazyk</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <div>
+            <div class="mN">
+                <label asp-for="nazev">Název</label>
+            </div>
+            <div class="detailBlok">
+                <div class="detailSEditem">
+                    <div class="mD">
+                        <input asp-for="nazev" class="textPole" readonly="readonly" />
+                    </div>
+                    <div id="edit">
+                        <a asp-action="Edit" asp-route-id="@Model.idJazyka"><div id="editIkona"></div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tlacitkaPopisku">
+            <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,12 @@
+﻿#ramecek {
+    margin: 100px auto;
+    width: 400px;
+    border: 5px dotted red;
+    text-align: center;
+}
+
+#titulek {
+    font-size: 27px;
+    margin: 0 auto;
+}
+

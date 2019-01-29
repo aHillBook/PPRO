@@ -1,0 +1,143 @@
+﻿    .tlacitkoPouzit {
+        font-family: 'Bosch Office Sans';
+        font-size: 12px;
+        letter-spacing: 2px;
+        width: 100px;
+        float:right;
+        padding: 5px;
+        /*
+            border: 1px solid #005691;
+            color: white;
+            background-color: #005691;
+        */
+        border: 1px solid white;
+        color: black;
+        background-color: white;
+        background-size: 200% 200%;
+        background-image: linear-gradient(to top, #008ecf 50%, transparent 0%);
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+    .tlacitkoPouzit:hover {
+        color: white;
+        border: 1px solid #008ecf;
+        background-image: linear-gradient(to top, #008ecf 51%, transparent 50%);
+        background-position: 0 100%;
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+    .tlacitkoReset {
+        font-family: 'Bosch Office Sans';
+        font-size: 12px;
+        letter-spacing: 2px;
+        width: 100px;
+        float:left;
+        padding: 5px;
+        /*
+            border: 1px solid #b90276;
+            color: white;
+            background-color: #b90276;
+        */
+        border: 1px solid white;
+        color: black;
+        background-color: white;
+
+        background-size: 200% 200%;
+        background-image: linear-gradient(to top, #e20015 50%, transparent 0%);
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+    .tlacitkoReset:hover {
+        color: white;
+        border: 1px solid #e20015;
+        background-image: linear-gradient(to top, #e20015 51%, transparent 50%);
+        background-position: 0 100%;
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+    .tlacitkoDelete {
+        font-family: 'Bosch Office Sans';
+        font-size: 12px;
+        letter-spacing: 2px;
+        width: 100px;
+        padding: 5px;
+ 
+
+        border: 1px solid white;
+        color: black;
+        background-color: white;
+
+        background-size: 200% 200%;
+        background-image: linear-gradient(to top, #e20015 50%, transparent 0%);
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+    .tlacitkoDelete:hover {
+        color: white;
+        border: 1px solid #e20015;
+        background-image: linear-gradient(to top, #e20015 51%, transparent 50%);
+        background-position: 0 100%;
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+        .tlacitkoObnovit {
+        font-family: 'Bosch Office Sans';
+        font-size: 12px;
+        letter-spacing: 2px;
+        width: 100px;
+        float:right;
+        padding: 5px;
+        /*
+            border: 1px solid #005691;
+            color: white;
+            background-color: #005691;
+        */
+        border: 1px solid white;
+        color: black;
+        background-color: white;
+        background-size: 200% 200%;
+        background-image: linear-gradient(to top, #eed877 50%, transparent 0%);
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+    .tlacitkoObnovit:hover {
+        color: red;
+        border: 1px solid #eed877;
+        background-image: linear-gradient(to top, #eed877 51%, transparent 50%);
+        background-position: 0 100%;
+        -webkit-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -moz-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -ms-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        -o-transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+        transition: background-position 300ms, color 300ms ease, border-color 300ms ease;
+    }
+
+ 

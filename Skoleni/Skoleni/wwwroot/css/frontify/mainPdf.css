@@ -1,0 +1,102 @@
+﻿body {
+    font-family: 'Bosch Office Sans';
+    font-size: 16px;
+    width: 100%;
+    text-align:center;
+    margin: 0;
+
+}
+
+#stranka {
+    margin: 0 auto;
+    min-width: 1024px;
+    max-width: 1600px;
+}
+
+#supergraphics {
+    background-image: url(/images/frontify/supergraphics.png), url(/Images/Frontify/supergraphics.png);
+    background-position-y:center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    
+    
+    width:100%;
+    height:17px;
+}
+
+#logo {
+    text-align:left;
+    width:100%;
+    height:52px;
+}
+
+#logo img {
+    width:128px;
+    height:63px;
+
+}
+
+
+#nadpisText {
+    font-family: 'Bosch Office Sans';
+    font-size: 14px;
+    text-align:center;
+    color: #008ecf;
+    letter-spacing: 1px;
+    -webkit-transform: skew(-20deg);
+    -ms-transform: skew(-20deg);
+    transform: skew(-20deg);
+
+    box-sizing: border-box;
+    background:#fff;
+    padding-top:10px;
+    margin-left:10px;
+    margin-right:-10px;
+
+    -webkit-box-shadow: 0px -29px 50px 25px rgba(255,255,255,0.53);
+    -moz-box-shadow: 0px -29px 50px 25px rgba(255,255,255,0.53);
+    box-shadow: 0px -29px 50px 25px rgba(255,255,255,0.53);
+
+}
+
+
+#nadpis {
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top:50px;
+    text-align: right;
+
+    width: 100%;
+    border-top: #bfc0c2;
+    height: 20px;
+
+    font-family: 'Bosch Office Sans';
+    font-size: 8px;
+
+}
+
+table {
+    margin-top: 10px;
+    border: 2px solid black;
+    border-collapse:collapse;
+    width: 100%;
+}
+
+table tr td {
+    text-align:left;
+    padding-left: 10px;
+}
+
+.l {
+    width: 40%;
+    padding-top: 10px;
+    border-right: 1px solid #bfc0c2;
+}
+
+.d {
+    border-bottom: 1px solid #bfc0c2;
+}
+

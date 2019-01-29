@@ -1,0 +1,104 @@
+﻿#popisky:hover > #podmenu {
+    display: block;
+}
+
+
+#podmenu {
+    display: none;
+    position: absolute;
+    margin-top: 5px;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    #podmenu a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        #podmenu a:hover {
+            background-color: #f1f1f1;
+        }
+
+.vybran {
+    color: #bfc0c2;
+    padding: 12px 16px;
+    display: block;
+}
+
+
+
+#seznamPopisku {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #bfc0c2;
+}
+
+    #seznamPopisku th, td {
+        text-align: center;
+        ;
+        padding: 8px;
+    }
+
+    #seznamPopisku input {
+        width: 300px;
+        height: 25px;
+        font-size: 16px;
+    }
+
+    #seznamPopisku tr:nth-child(2n+1) {
+        background-color: #bfc0c2;
+    }
+
+        #seznamPopisku tr:nth-child(2n+1) input {
+            border: 1px solid #525f6b;
+        }
+
+        #seznamPopisku tr:nth-child(2n+1) #edit {
+            border: 1px solid #525f6b;
+        }
+
+            #seznamPopisku tr:nth-child(2n+1) #edit:hover {
+                border: 1px solid black;
+            }
+
+        #seznamPopisku tr:nth-child(2n+1) #delete {
+            border: 1px solid #525f6b;
+        }
+
+            #seznamPopisku tr:nth-child(2n+1) #delete:hover {
+                border: 1px solid black;
+            }
+
+.prvniSloupec {
+    width: 300px;
+}
+
+
+
+
+
+
+    #shortBlok {
+        height: 300px;
+        width: 500px;
+        margin: 50px auto;
+        border: 1px dashed #bfc0c2;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    input[type=file] {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        cursor: pointer;
+    }
+
+        input[type=file]:hover {
+            color: #008ecf;
+        }

@@ -7,10 +7,33 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\admin\index.css" />
+    <None Include="wwwroot\css\admin\popisky.css" />
+    <None Include="wwwroot\css\admin\tabulkaSeznam.css" />
+    <None Include="wwwroot\css\frontify\main.css" />
+    <None Include="wwwroot\css\frontify\mainPdf.css" />
+    <None Include="wwwroot\css\kalendar\jquery.datetimepicker.min.css" />
+    <None Include="wwwroot\css\prvky\akcniTlacitka.css" />
+    <None Include="wwwroot\css\prvky\bocniTlacitka.css" />
+    <None Include="wwwroot\css\prvky\filtrSkoronehod.css" />
+    <None Include="wwwroot\css\prvky\seznamKmu.css" />
+    <None Include="wwwroot\css\prvky\seznamStyl.css" />
+    <None Include="wwwroot\css\jquery-ui.css" />
+    <None Include="wwwroot\js\jquery-ui.js" />
+    <None Include="wwwroot\css\jquery-ui.min.css" />
+    <None Include="wwwroot\js\jquery-ui.min.js" />
+    <None Include="wwwroot\css\jquery-ui.structure.css" />
+    <None Include="wwwroot\css\jquery-ui.structure.min.css" />
+    <None Include="wwwroot\css\jquery-ui.theme.css" />
+    <None Include="wwwroot\css\jquery-ui.theme.min.css" />
   </ItemGroup>
 
 </Project>

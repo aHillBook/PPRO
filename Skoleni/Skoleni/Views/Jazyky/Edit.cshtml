@@ -1,0 +1,43 @@
+﻿@using Skoleni.Models
+@model Jazyk
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-cerveno-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Editace jazyka</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+<div style="padding: 10px;">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div>
+            <div class="mN">
+                <label asp-for="nazev">Název</label>
+                <input type="hidden" asp-for="idJazyka" />
+            </div>
+            <div class="mD">
+                <input asp-for="nazev" class="textPole" />
+                <span asp-validation-for="nazev" class="text-danger"></span>
+            </div>
+        </div>
+        <div id="tlacitkaPopisku">
+            <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+            <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+        </div>
+    </form>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

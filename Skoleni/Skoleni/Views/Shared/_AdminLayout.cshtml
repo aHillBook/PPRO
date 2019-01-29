@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Aplikace Školení</title>
+
+    <link href="~/css/frontify/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/prvky/akcniTlacitka.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/prvky/bocniTlacitka.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/prvky/seznamStyl.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/admin/tabulkaSeznam.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+@{
+    int akce = 0;
+
+    switch (ViewData["adminVolba"])
+    {
+        case 1:
+            akce = 1;
+            break;
+        default:
+            akce = -1;
+            break;
+    }
+
+}
+
+<body>
+    <div id="teloStranky">
+        <header class="hlavicka">
+            <div class="uvod">
+                <div class="blokPrubezny">
+                    <div class="blokPrubezny-radek">
+                        <div class="logo" />
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="blokPrubezny">
+                    <div class="blokPrubezny-menu">
+                        <nav class="nav-menu">
+                            <ul>
+
+                                @if (akce == 1)
+                                {
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
+                                }
+                                else
+                                {
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
+                                }
+
+                                @if (akce == 2)
+                                {
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
+                                }
+                                else
+                                {
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
+                                }
+
+                                @if (akce == 3)
+                                {
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
+                                }
+                                else
+                                {
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
+                                }
+
+                                @if (akce == 4)
+                                {
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
+                                }
+                                else
+                                {
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
+                                }
+
+                                @if (akce == 5)
+                                {
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Uzivatel")">Seznam oprávnění</a></li>
+                                }
+                                else
+                                {
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Uzivatel")">Seznam oprávnění</a></li>
+                                }
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+            @RenderBody()
+        </main>
+        <div class="novyIkonaNapoveda">
+            Přidat nový jazyk
+        </div>
+
+        <div class="verze">Q-1.0.0 (28. 01. 2019)</div>
+        <footer class="paticka"></footer>
+    </div>
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/admin/admin.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
