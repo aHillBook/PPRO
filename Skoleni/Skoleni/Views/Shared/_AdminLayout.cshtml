@@ -16,20 +16,6 @@
 
 
 </head>
-@{
-    int akce = 0;
-
-    switch (ViewData["adminVolba"])
-    {
-        case 1:
-            akce = 1;
-            break;
-        default:
-            akce = -1;
-            break;
-    }
-
-}
 
 <body>
     <div id="teloStranky">
@@ -47,7 +33,7 @@
                         <nav class="nav-menu">
                             <ul>
 
-                                @if (akce == 1)
+                                @if (ViewData["adminVolba"].ToString().Equals("1"))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
                                 }
@@ -56,7 +42,7 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
                                 }
 
-                                @if (akce == 2)
+                                @if (ViewData["adminVolba"].ToString().Equals("2"))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
                                 }
@@ -65,7 +51,7 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
                                 }
 
-                                @if (akce == 3)
+                                @if (ViewData["adminVolba"].ToString().Equals(1))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
                                 }
@@ -74,7 +60,7 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
                                 }
 
-                                @if (akce == 4)
+                                @if (ViewData["adminVolba"].ToString().Equals(1))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
                                 }
@@ -83,7 +69,7 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
                                 }
 
-                                @if (akce == 5)
+                                @if (ViewData["adminVolba"].ToString().Equals(1))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Uzivatel")">Seznam oprávnění</a></li>
                                 }
