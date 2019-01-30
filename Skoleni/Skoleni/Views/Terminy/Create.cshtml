@@ -1,0 +1,55 @@
+﻿@using Skoleni.Models;
+@model Termin
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-modro-modra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Nové školení</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="skoleni.nazev">Školení</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="skoleni.nazev" class="dropdown-toggle" />
+                    <span asp-validation-for="skoleni.nazev" class="text-danger"></span>
+                </div>
+                @*<div class="mN">
+                    <label asp-for="popis">Popis</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="popis" class="textPole" />
+                    <span asp-validation-for="popis" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="skolitel">Školitel</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="skolitel" class="textPole" />
+                    <span asp-validation-for="skolitel" class="text-danger"></span>
+                </div>*@
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

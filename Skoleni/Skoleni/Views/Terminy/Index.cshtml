@@ -1,12 +1,12 @@
 ﻿@using Skoleni.Models;
-@model IEnumerable<Skoleni>
+@model IEnumerable<Termin>
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="pozadiUvodu">
-    <div class="pozadi-cerveno-fialova">
+    <div class="pozadi-modro-modra">
         <div class="nadpis">
             <div class="nadpis-blok">
                 <h1 class="nadpis-blok-h1">Seznam školení</h1>
@@ -25,9 +25,10 @@
     <table id="tabulkaKmu">
         <thead>
             <tr>
-                <th>Název</th>
-                <th>Popis</th>
-                <th>Školitel</th>
+                <th>Školení</th>
+                <th>Termín</th>
+                <th>Doba trvání</th>
+                <th>jazyk</th>
                 <th>Možnosti</th>
             </tr>
         </thead>
@@ -36,24 +37,27 @@
             {
                 <tr id="hlavniRadek">
                     <td>
-                        @Html.DisplayFor(modelItem => item.nazev)
+                        @Html.DisplayFor(modelItem => item.skoleni.nazev)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.popis)
+                        @Html.DisplayFor(modelItem => item.terminKonani)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.skolitel)
+                        @Html.DisplayFor(modelItem => item.dobaTrvani)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jazyk.nazev)
                     </td>
                     <td style="display: flex; margin-top:-1px;padding-top:10px;">
                         <div id="edit">
-                            <a asp-action="Edit" asp-route-id="@item.idSkoleni"><div id="editIkona"></div></a>
+                            <a asp-action="Edit" asp-route-id="@item.idTerminu"><div id="editIkona"></div></a>
                         </div>
 
                         <div id="detail">
-                            <a asp-action="Details" asp-route-id="@item.idSkoleni"><div id="detailIkona"></div></a>
+                            <a asp-action="Details" asp-route-id="@item.idTerminu"><div id="detailIkona"></div></a>
                         </div>
                         <div id="delete">
-                            <a asp-action="Delete" asp-route-id="@item.idSkoleni"><div id="deleteIkona"></div></a>
+                            <a asp-action="Delete" asp-route-id="@item.idTerminu"><div id="deleteIkona"></div></a>
                         </div>
                     </td>
                 </tr>
@@ -62,5 +66,5 @@
     </table>
 </div>
 <div class="novyIkonaNapoveda">
-    Přidat nové školení
+    Přidat nový termín
 </div>
