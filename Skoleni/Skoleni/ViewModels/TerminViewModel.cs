@@ -16,5 +16,7 @@ namespace Skoleni.ViewModels
         public SelectList seznamSkoleni { get; set; }
 
         public SelectList seznamJazyku { get; set; }
+
+        public List<Jazyk> jazyky { get; set; }
     }
 }
