@@ -56,7 +56,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idSkoleni,nazev,popis,skolitel")] Models.Skoleni skoleni)
+        public async Task<IActionResult> Create([Bind("idSkoleni,nazev,popis,skolitel")] Models.PSkoleni skoleni)
         {
             ViewData["adminVolba"] = 3;
             if (ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idSkoleni,nazev,popis,skolitel")] Models.Skoleni skoleni)
+        public async Task<IActionResult> Edit(int id, [Bind("idSkoleni,nazev,popis,skolitel")] Models.PSkoleni skoleni)
         {
             ViewData["adminVolba"] = 3;
             if (id != skoleni.idSkoleni)

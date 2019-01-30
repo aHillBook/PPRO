@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\css\admin\index.css" />
     <None Include="wwwroot\css\admin\popisky.css" />
     <None Include="wwwroot\css\admin\tabulkaSeznam.css" />

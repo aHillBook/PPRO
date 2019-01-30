@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Skoleni.Models;
+using Skoleni.Services;
+using Skoleni.ViewModels;
 
 namespace Skoleni.Controllers
 {
@@ -48,7 +50,11 @@ namespace Skoleni.Controllers
         public IActionResult Create()
         {
             ViewData["adminVolba"] = 4;
-            return View();
+            TerminViewModel vm = new TerminViewModel();
+
+            vm = TerminyServ.getTerminBlankViewModel(_context);
+
+            return View(vm);
         }
 
         // POST: Terminy/Create

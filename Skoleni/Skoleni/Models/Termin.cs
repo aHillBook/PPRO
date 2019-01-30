@@ -12,7 +12,7 @@ namespace Skoleni.Models
         public int idTerminu { get; set; }
         public DateTime terminKonani { get; set; }
         public int dobaTrvani { get; set; }
-        public Skoleni skoleni { get; set; }
+        public PSkoleni skoleni { get; set; }
 
         public Jazyk jazyk { get; set; }
     }

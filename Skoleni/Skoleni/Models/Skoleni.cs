@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Skoleni.Models
 {
-    public class Skoleni
+    public class PSkoleni
     {
         [Key]
         public int idSkoleni { get; set; }

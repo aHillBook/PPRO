@@ -1,5 +1,5 @@
-﻿@using Skoleni.Models;
-@model Termin
+﻿@using Skoleni.ViewModels;
+@model TerminViewModel
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -21,27 +21,38 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <div class="mN">
-                    <label asp-for="skoleni.nazev">Školení</label>
+                    <label asp-for="seznamSkoleni">Školení</label>
                 </div>
                 <div class="mD">
-                    <select asp-for="skoleni.nazev" class="dropdown-toggle" />
-                    <span asp-validation-for="skoleni.nazev" class="text-danger"></span>
-                </div>
-                @*<div class="mN">
-                    <label asp-for="popis">Popis</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="popis" class="textPole" />
-                    <span asp-validation-for="popis" class="text-danger"></span>
+                    <select asp-for="seznamSkoleni" asp-items="@Model.seznamSkoleni" size="1" class="textPole">
+                        <option>Vyberte prosím školení...</option>
+                    </select>
+                    <span asp-validation-for="seznamSkoleni" class="text-danger"></span>
                 </div>
                 <div class="mN">
-                    <label asp-for="skolitel">Školitel</label>
+                    <label asp-for="seznamJazyku">Jazyk školení</label>
                 </div>
                 <div class="mD">
-                    <input asp-for="skolitel" class="textPole" />
-                    <span asp-validation-for="skolitel" class="text-danger"></span>
-                </div>*@
+                    <select asp-for="seznamJazyku" asp-items="@Model.seznamJazyku" class="textPole">
+                        <option>Vyberte prosím jazyk...</option>
+                    </select>
+                    <span asp-validation-for="seznamJazyku" class="text-danger"></span>
+                </div>
             </div>
+            @*<div class="mN">
+            <label asp-for="popis">Popis</label>
+        </div>
+        <div class="mD">
+            <input asp-for="popis" class="textPole" />
+            <span asp-validation-for="popis" class="text-danger"></span>
+        </div>
+        <div class="mN">
+            <label asp-for="skolitel">Školitel</label>
+        </div>
+        <div class="mD">
+            <input asp-for="skolitel" class="textPole" />
+            <span asp-validation-for="skolitel" class="text-danger"></span>
+        </div>*@
             <div id="tlacitkaPopisku">
                 <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
                 <a asp-action="Index" class="tlacitkoReset">Zpět</a>
