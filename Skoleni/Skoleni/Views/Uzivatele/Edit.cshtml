@@ -1,0 +1,73 @@
+﻿@using Skoleni.ViewModels;
+@model UzivatelViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-zeleno-zelena">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Editace uživatele</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="uzivatel.jmeno">Jméno</label>
+                    <input type="hidden" asp-for="uzivatel.idUzivatele" />
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.jmeno" class="textPole" />
+                    <span asp-validation-for="uzivatel.jmeno" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.prijmeni">Příjmení</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.prijmeni" class="textPole" />
+                    <span asp-validation-for="uzivatel.prijmeni" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.stredisko">Středisko</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.stredisko" class="textPole" />
+                    <span asp-validation-for="uzivatel.stredisko" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.email">E-mail</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.email" class="textPole" />
+                    <span asp-validation-for="uzivatel.email" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="seznamJazyku">Jazyk uživatele</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="uzivatel.idJazyka" asp-items="@Model.seznamJazyku" class="textPole">
+                        <option>Vyberte prosím jazyk...</option>
+                    </select>
+                    <span asp-validation-for="uzivatel.idJazyka" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -51,7 +51,7 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
                                 }
 
-                                @if (ViewData["adminVolba"].ToString().Equals(1))
+                                @if (ViewData["adminVolba"].ToString().Equals("3"))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
                                 }
@@ -60,7 +60,7 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
                                 }
 
-                                @if (ViewData["adminVolba"].ToString().Equals(1))
+                                @if (ViewData["adminVolba"].ToString().Equals("4"))
                                 {
                                     <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
                                 }
@@ -69,13 +69,13 @@
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
                                 }
 
-                                @if (ViewData["adminVolba"].ToString().Equals(1))
+                                @if (ViewData["adminVolba"].ToString().Equals("5"))
                                 {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Uzivatel")">Seznam oprávnění</a></li>
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Uzivatele")">Seznam uživatelů</a></li>
                                 }
                                 else
                                 {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Uzivatel")">Seznam oprávnění</a></li>
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Uzivatele")">Seznam uživatelů</a></li>
                                 }
 
 
