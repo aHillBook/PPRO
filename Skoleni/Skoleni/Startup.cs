@@ -37,8 +37,11 @@ namespace Skoleni
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //var connection = @"Server=(localdb)\mssqllocaldb;Database=SkoleniDb;Trusted_Connection=True;ConnectRetryCount=0";
-            
-            var connection = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\PPRO\SkoleniDb.mdf; Integrated Security = True; Connect Timeout = 30";
+
+            //var connection = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\PPRO\SkoleniDb.mdf; Integrated Security = True; Connect Timeout = 30";
+
+            var connection = @"Data Source=JH0SQL01.emea.bosch.com; Database=C:\PPRO\SKOLENIDB.MDF;Trusted_Connection=True;ConnectRetryCount=0";
+
             services.AddDbContext<DB> (options => options.UseSqlServer(connection));
 
         }

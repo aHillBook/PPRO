@@ -34,6 +34,8 @@ namespace Skoleni.Services
             var kolekceJazyku = context.seznamJazyku.OrderBy(a => a.nazev).Select(b => new { Id = b.idJazyka, Value = b.nazev });
             vm.seznamJazyku = new SelectList(kolekceJazyku, "Id", "Value");
 
+            vm.jazyky = context.seznamJazyku.ToList();
+
 
             return vm;
         }

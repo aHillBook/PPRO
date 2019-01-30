@@ -24,7 +24,7 @@
                     <label asp-for="seznamSkoleni">Školení</label>
                 </div>
                 <div class="mD">
-                    <select asp-for="seznamSkoleni" asp-items="@Model.seznamSkoleni" size="1" class="textPole">
+                    <select asp-for="termin.skoleni" asp-items="@Model.seznamSkoleni" size="1" class="textPole">
                         <option>Vyberte prosím školení...</option>
                     </select>
                     <span asp-validation-for="seznamSkoleni" class="text-danger"></span>
@@ -33,7 +33,7 @@
                     <label asp-for="seznamJazyku">Jazyk školení</label>
                 </div>
                 <div class="mD">
-                    <select asp-for="seznamJazyku" asp-items="@Model.seznamJazyku" class="textPole">
+                    <select asp-for="termin.jazyk" asp-items="@Model.seznamJazyku" class="textPole">
                         <option>Vyberte prosím jazyk...</option>
                     </select>
                     <span asp-validation-for="seznamJazyku" class="text-danger"></span>
