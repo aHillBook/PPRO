@@ -12,5 +12,8 @@ namespace Skoleni.ViewModels
         public POpravneni opravneni { get; set; }
         public SelectList seznamUzivatelu { get; set; }
         public SelectList seznamRoli { get; set; }
+
+        public int idUzivatele { get; set; }
+        public int idRole { get; set; }
     }
 }

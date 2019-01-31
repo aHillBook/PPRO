@@ -24,10 +24,10 @@
                     <label asp-for="seznamUzivatelu">Uživatel</label>
                 </div>
                 <div class="mD">
-                    <select asp-for="opravneni.idUzivatele" asp-items="@Model.seznamUzivatelu" class="textPole">
+                    <select asp-for="idUzivatele" asp-items="@Model.seznamUzivatelu" class="textPole">
                         <option>Vyberte prosím jazyk...</option>
                     </select>
-                    <span asp-validation-for="opravneni.idUzivatele" class="text-danger"></span>
+                    <span asp-validation-for="idUzivatele" class="text-danger"></span>
                 </div>
             </div>
             <div id="tlacitkaPopisku">
