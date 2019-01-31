@@ -21,11 +21,16 @@ namespace Skoleni.Controllers
         }
 
         // GET: Uzivatele
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? stranka)
         {
             ViewData["adminVolba"] = 5;
+
+            var vm = UzivateleServ.getSeznamUzivateluViewModel(_context, stranka);
+
             var dB = _context.seznamUzivatelu.Include(u => u.jazyk);
-            return View(await dB.ToListAsync());
+            //return View(await dB.ToListAsync());
+
+            return View(vm);
         }
 
         // GET: Uzivatele/Details/5

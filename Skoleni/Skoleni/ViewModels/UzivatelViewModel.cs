@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace Skoleni.ViewModels
 {
@@ -11,5 +12,9 @@ namespace Skoleni.ViewModels
     {
         public SelectList seznamJazyku { get; set; }
         public Uzivatel uzivatel { get; set; }
+
+        public List<Uzivatel> seznamUzivatelu { get; set; }
+
+        public IPagedList<Uzivatel> strankovanySeznam { get; set; }
     }
 }

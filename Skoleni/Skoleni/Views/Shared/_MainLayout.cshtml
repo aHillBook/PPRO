@@ -35,51 +35,23 @@
                         <nav class="nav-menu">
                             <ul>
 
-                                @if (ViewData["adminVolba"].ToString().Equals("1"))
+                                @if (ViewData["mainVolba"].ToString().Equals("1"))
                                 {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Kurzy")">Seznam kurzů</a></li>
                                 }
                                 else
                                 {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Kurzy")">Seznam kurzů</a></li>
                                 }
 
-                                @if (ViewData["adminVolba"].ToString().Equals("2"))
+                                @if (ViewData["mainVolba"].ToString().Equals("2"))
                                 {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Prihlasky")">Seznam přihlášek</a></li>
                                 }
                                 else
                                 {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Mistnosti")">Seznam místností</a></li>
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Prihlasky")">Seznam přihlášek</a></li>
                                 }
-
-                                @if (ViewData["adminVolba"].ToString().Equals("3"))
-                                {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Skoleni")">Seznam školení</a></li>
-                                }
-
-                                @if (ViewData["adminVolba"].ToString().Equals("4"))
-                                {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Terminy")">Seznam terminů</a></li>
-                                }
-
-                                @if (ViewData["adminVolba"].ToString().Equals("5"))
-                                {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Uzivatele")">Seznam uživatelů</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Uzivatele")">Seznam uživatelů</a></li>
-                                }
-
 
                             </ul>
                         </nav>
@@ -92,9 +64,8 @@
         <main>
             @RenderBody()
         </main>
-        
 
-        <div class="verze">Q-1.0.0 (28. 01. 2019)</div>
+
         <footer class="paticka"></footer>
     </div>
 

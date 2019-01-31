@@ -8,11 +8,13 @@ namespace Skoleni.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["mainVolba"] = 1;
             return View();
         }
 
         public IActionResult About()
         {
+            ViewData["mainVolba"] = 1;
             ViewData["Message"] = "Your application description page.";
 
             return View();
@@ -20,6 +22,7 @@ namespace Skoleni.Controllers
 
         public IActionResult Contact()
         {
+            ViewData["mainVolba"] = 1;
             ViewData["Message"] = "Your contact page.";
 
             return View();
@@ -27,12 +30,14 @@ namespace Skoleni.Controllers
 
         public IActionResult Privacy()
         {
+            ViewData["mainVolba"] = 1;
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            ViewData["mainVolba"] = 1;
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
