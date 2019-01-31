@@ -10,7 +10,7 @@ using Skoleni.Models;
 namespace Skoleni.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20190118135501_InitialCreate")]
+    [Migration("20190130201710_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,33 @@ namespace Skoleni.Migrations
                     b.ToTable("seznamMistnosti");
                 });
 
-            modelBuilder.Entity("Skoleni.Models.Skoleni", b =>
+            modelBuilder.Entity("Skoleni.Models.POpravneni", b =>
+                {
+                    b.Property<int>("idUzivatele");
+
+                    b.Property<int>("idRole");
+
+                    b.HasKey("idUzivatele", "idRole");
+
+                    b.HasAlternateKey("idRole", "idUzivatele");
+
+                    b.ToTable("seznamOpravneni");
+                });
+
+            modelBuilder.Entity("Skoleni.Models.PRole", b =>
+                {
+                    b.Property<int>("idJazyka")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("nazev");
+
+                    b.HasKey("idJazyka");
+
+                    b.ToTable("seznamRoli");
+                });
+
+            modelBuilder.Entity("Skoleni.Models.PSkoleni", b =>
                 {
                     b.Property<int>("idSkoleni")
                         .ValueGeneratedOnAdd()
@@ -58,8 +84,6 @@ namespace Skoleni.Migrations
                     b.Property<string>("nazev");
 
                     b.Property<string>("popis");
-
-                    b.Property<string>("skolitel");
 
                     b.HasKey("idSkoleni");
 
@@ -74,17 +98,21 @@ namespace Skoleni.Migrations
 
                     b.Property<int>("dobaTrvani");
 
-                    b.Property<int?>("jazykidJazyka");
+                    b.Property<int>("idJazyka");
 
-                    b.Property<int?>("skoleniidSkoleni");
+                    b.Property<int>("idMistnosti");
+
+                    b.Property<int>("idSkoleni");
 
                     b.Property<DateTime>("terminKonani");
 
                     b.HasKey("idTerminu");
 
-                    b.HasIndex("jazykidJazyka");
+                    b.HasIndex("idJazyka");
 
-                    b.HasIndex("skoleniidSkoleni");
+                    b.HasIndex("idMistnosti");
+
+                    b.HasIndex("idSkoleni");
 
                     b.ToTable("seznamTerminu");
                 });
@@ -97,9 +125,13 @@ namespace Skoleni.Migrations
 
                     b.Property<string>("email");
 
+                    b.Property<string>("heslo");
+
                     b.Property<int>("idJazyka");
 
                     b.Property<string>("jmeno");
+
+                    b.Property<string>("nt");
 
                     b.Property<string>("prijmeni");
 
@@ -112,15 +144,43 @@ namespace Skoleni.Migrations
                     b.ToTable("seznamUzivatelu");
                 });
 
+            modelBuilder.Entity("Skoleni.Models.Zaznam", b =>
+                {
+                    b.Property<int>("idZaznamu")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("datumPrihlaseni");
+
+                    b.Property<int>("idTerminu");
+
+                    b.Property<int>("idUzivatele");
+
+                    b.HasKey("idZaznamu");
+
+                    b.HasIndex("idTerminu");
+
+                    b.HasIndex("idUzivatele");
+
+                    b.ToTable("seznamZaznamu");
+                });
+
             modelBuilder.Entity("Skoleni.Models.Termin", b =>
                 {
                     b.HasOne("Skoleni.Models.Jazyk", "jazyk")
                         .WithMany()
-                        .HasForeignKey("jazykidJazyka");
+                        .HasForeignKey("idJazyka")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Skoleni.Models.Skoleni", "skoleni")
+                    b.HasOne("Skoleni.Models.Mistnost", "mistnost")
                         .WithMany()
-                        .HasForeignKey("skoleniidSkoleni");
+                        .HasForeignKey("idMistnosti")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Skoleni.Models.PSkoleni", "skoleni")
+                        .WithMany()
+                        .HasForeignKey("idSkoleni")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Skoleni.Models.Uzivatel", b =>
@@ -128,6 +188,19 @@ namespace Skoleni.Migrations
                     b.HasOne("Skoleni.Models.Jazyk", "jazyk")
                         .WithMany()
                         .HasForeignKey("idJazyka")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Skoleni.Models.Zaznam", b =>
+                {
+                    b.HasOne("Skoleni.Models.Termin", "termin")
+                        .WithMany()
+                        .HasForeignKey("idTerminu")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Skoleni.Models.Uzivatel", "uzivatel")
+                        .WithMany()
+                        .HasForeignKey("idUzivatele")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -18,5 +18,8 @@ namespace Skoleni.Models
         public int idJazyka { get; set; }
 
         public Jazyk jazyk { get; set; }
+
+        public string nt { get; set; }
+        public string heslo { get; set; }
     }
 }
