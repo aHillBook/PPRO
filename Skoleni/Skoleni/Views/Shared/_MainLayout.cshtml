@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Aplikace Školení</title>
 
+    <link href="~/css/menicko.css" rel="stylesheet" type="text/css" />
 
     <link href="~/css/PagedList.css" rel="stylesheet" type="text/css" />
     <link href="~/css/frontify/main.css" rel="stylesheet" type="text/css" />
@@ -20,6 +21,24 @@
 </head>
 
 <body>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+                <li><a href="@Url.Action("Index","Home")" class="menuPolozka">Úvod</a></li>
+                <li><a href="@Url.Action("About","Home")" class="menuPolozka">O aplikaci</a></li>
+                <li><a href="@Url.Action("Contact","Home")" class="menuPolozka">Kontakt</a></li>
+                <li><a href="@Url.Action("Privacy","Home")" class="menuPolozka">Návod</a></li>
+                <li><hr class="carka" /></li>
+                <li><a href="@Url.Action("Login","Home")" class="menuPolozka">Přihlásit se</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div id="teloStranky">
         <header class="hlavicka">
             <div class="uvod">
