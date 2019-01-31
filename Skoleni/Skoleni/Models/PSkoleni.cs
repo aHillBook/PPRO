@@ -12,9 +12,6 @@ namespace Skoleni.Models
         public int idSkoleni { get; set; }
         public string nazev { get; set; }
         public string popis { get; set; }
-        public string skolitel { get; set; }
-
-
 
     }
 }

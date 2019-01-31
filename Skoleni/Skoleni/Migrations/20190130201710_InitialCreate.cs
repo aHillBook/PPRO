@@ -36,14 +36,39 @@ namespace Skoleni.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "seznamOpravneni",
+                columns: table => new
+                {
+                    idUzivatele = table.Column<int>(nullable: false),
+                    idRole = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_seznamOpravneni", x => new { x.idUzivatele, x.idRole });
+                    table.UniqueConstraint("AK_seznamOpravneni_idRole_idUzivatele", x => new { x.idRole, x.idUzivatele });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "seznamRoli",
+                columns: table => new
+                {
+                    idJazyka = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    nazev = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_seznamRoli", x => x.idJazyka);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "seznamSkoleni",
                 columns: table => new
                 {
                     idSkoleni = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     nazev = table.Column<string>(nullable: true),
-                    popis = table.Column<string>(nullable: true),
-                    skolitel = table.Column<string>(nullable: true)
+                    popis = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,7 +85,9 @@ namespace Skoleni.Migrations
                     prijmeni = table.Column<string>(nullable: true),
                     stredisko = table.Column<int>(nullable: false),
                     email = table.Column<string>(nullable: true),
-                    idJazyka = table.Column<int>(nullable: false)
+                    idJazyka = table.Column<int>(nullable: false),
+                    nt = table.Column<string>(nullable: true),
+                    heslo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,52 +108,110 @@ namespace Skoleni.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     terminKonani = table.Column<DateTime>(nullable: false),
                     dobaTrvani = table.Column<int>(nullable: false),
-                    skoleniidSkoleni = table.Column<int>(nullable: true),
-                    jazykidJazyka = table.Column<int>(nullable: true)
+                    idJazyka = table.Column<int>(nullable: false),
+                    idSkoleni = table.Column<int>(nullable: false),
+                    idMistnosti = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_seznamTerminu", x => x.idTerminu);
                     table.ForeignKey(
-                        name: "FK_seznamTerminu_seznamJazyku_jazykidJazyka",
-                        column: x => x.jazykidJazyka,
+                        name: "FK_seznamTerminu_seznamJazyku_idJazyka",
+                        column: x => x.idJazyka,
                         principalTable: "seznamJazyku",
                         principalColumn: "idJazyka",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_seznamTerminu_seznamSkoleni_skoleniidSkoleni",
-                        column: x => x.skoleniidSkoleni,
+                        name: "FK_seznamTerminu_seznamMistnosti_idMistnosti",
+                        column: x => x.idMistnosti,
+                        principalTable: "seznamMistnosti",
+                        principalColumn: "idMistnosti",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_seznamTerminu_seznamSkoleni_idSkoleni",
+                        column: x => x.idSkoleni,
                         principalTable: "seznamSkoleni",
                         principalColumn: "idSkoleni",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "seznamZaznamu",
+                columns: table => new
+                {
+                    idZaznamu = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    idTerminu = table.Column<int>(nullable: false),
+                    idUzivatele = table.Column<int>(nullable: false),
+                    datumPrihlaseni = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_seznamZaznamu", x => x.idZaznamu);
+                    table.ForeignKey(
+                        name: "FK_seznamZaznamu_seznamTerminu_idTerminu",
+                        column: x => x.idTerminu,
+                        principalTable: "seznamTerminu",
+                        principalColumn: "idTerminu",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_seznamZaznamu_seznamUzivatelu_idUzivatele",
+                        column: x => x.idUzivatele,
+                        principalTable: "seznamUzivatelu",
+                        principalColumn: "idUzivatele",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_seznamTerminu_jazykidJazyka",
+                name: "IX_seznamTerminu_idJazyka",
                 table: "seznamTerminu",
-                column: "jazykidJazyka");
+                column: "idJazyka");
 
             migrationBuilder.CreateIndex(
-                name: "IX_seznamTerminu_skoleniidSkoleni",
+                name: "IX_seznamTerminu_idMistnosti",
                 table: "seznamTerminu",
-                column: "skoleniidSkoleni");
+                column: "idMistnosti");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seznamTerminu_idSkoleni",
+                table: "seznamTerminu",
+                column: "idSkoleni");
 
             migrationBuilder.CreateIndex(
                 name: "IX_seznamUzivatelu_idJazyka",
                 table: "seznamUzivatelu",
                 column: "idJazyka");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seznamZaznamu_idTerminu",
+                table: "seznamZaznamu",
+                column: "idTerminu");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_seznamZaznamu_idUzivatele",
+                table: "seznamZaznamu",
+                column: "idUzivatele");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "seznamMistnosti");
+                name: "seznamOpravneni");
+
+            migrationBuilder.DropTable(
+                name: "seznamRoli");
+
+            migrationBuilder.DropTable(
+                name: "seznamZaznamu");
 
             migrationBuilder.DropTable(
                 name: "seznamTerminu");
 
             migrationBuilder.DropTable(
                 name: "seznamUzivatelu");
+
+            migrationBuilder.DropTable(
+                name: "seznamMistnosti");
 
             migrationBuilder.DropTable(
                 name: "seznamSkoleni");
