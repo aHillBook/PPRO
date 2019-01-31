@@ -1,9 +1,13 @@
-﻿@using Skoleni.Models;
-@model IEnumerable<Uzivatel>
+﻿@using Skoleni.ViewModels;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@model UzivatelViewModel;
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <div class="pozadiUvodu">
     <div class="pozadi-zeleno-zelena">
@@ -33,7 +37,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.strankovanySeznam)
             {
             <tr id="hlavniRadek">
                 <td>
@@ -68,6 +72,23 @@
         </tbody>
     </table>
 </div>
+
+<div class="seznamKmu">
+    @if (Model.strankovanySeznam.TotalItemCount > 20)
+    {
+        <div class="strankovanySeznam">
+            <div>
+                Zobrazeny události od @Model.strankovanySeznam.FirstItemOnPage do @Model.strankovanySeznam.LastItemOnPage z počtu @Model.strankovanySeznam.TotalItemCount
+            </div>
+            <div id="strankovani">
+                @Html.PagedListPager(Model.strankovanySeznam, x => Url.Action("Index", new { x }))
+                @*@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page }))*@
+            </div>
+        </div>
+    }
+</div>
+<div id="odspodu" />
+
 <div class="novyIkonaNapoveda">
     Přidat nového uživatele
 </div>

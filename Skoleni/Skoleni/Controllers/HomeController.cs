@@ -8,31 +8,27 @@ namespace Skoleni.Controllers
     {
         public IActionResult Index()
         {
+            ViewData["mainVolba"] = 1;
             return View();
         }
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["mainVolba"] = 1;
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult Privacy()
         {
+            ViewData["mainVolba"] = 1;
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            ViewData["mainVolba"] = 1;
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
