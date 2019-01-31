@@ -1,13 +1,12 @@
-﻿@using Skoleni.Models
+﻿@using Skoleni.Models;
 @model IEnumerable<Uzivatel>
-
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="pozadiUvodu">
-    <div class="pozadi-modro-cervena">
+    <div class="pozadi-zeleno-zelena">
         <div class="nadpis">
             <div class="nadpis-blok">
                 <h1 class="nadpis-blok-h1">Seznam uživatelů</h1>
@@ -29,17 +28,14 @@
                 <th>Jméno</th>
                 <th>Příjmení</th>
                 <th>Středisko</th>
-                <th>Email</th>
+                <th>E-mail</th>
                 <th>Jazyk</th>
-                <th>NT uživatel</th>
-                <th>Heslo</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
+            <tr id="hlavniRadek">
                 <td>
                     @Html.DisplayFor(modelItem => item.jmeno)
                 </td>
@@ -53,13 +49,7 @@
                     @Html.DisplayFor(modelItem => item.email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.jazyk.idJazyka)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.heslo)
+                    @Html.DisplayFor(modelItem => item.jazyk.nazev)
                 </td>
                 <td style="display: flex; margin-top:-1px;padding-top:10px;">
                     <div id="edit">
@@ -77,4 +67,7 @@
             }
         </tbody>
     </table>
+</div>
+<div class="novyIkonaNapoveda">
+    Přidat nového uživatele
 </div>

@@ -1,4 +1,4 @@
-﻿@using Skoleni.Models
+﻿@using Skoleni.Models;
 @model Uzivatel
 
 @{
@@ -6,10 +6,10 @@
 }
 
 <div class="pozadiUvodu">
-    <div class="pozadi-modro-cervena">
+    <div class="pozadi-zeleno-zelena">
         <div class="nadpis">
             <div class="nadpis-blok">
-                <h1 class="nadpis-blok-h1">Detaily uživatele</h1>
+                <h1 class="nadpis-blok-h1">Podrobnosti - uživatel</h1>
             </div>
         </div>
         <div class="vyvysenyBod"></div>
@@ -18,67 +18,53 @@
 
 <div id="shortBlok">
     <div style="padding: 10px;">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div>
-                <div class="mN">
-                    <label asp-for="jmeno">Jméno</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="jmeno" class="textPole" />
-                    <span asp-validation-for="jmeno" class="text-danger"></span>
-                </div>
-
-                <div class="mN">
-                    <label asp-for="prijmeni">Příjmení</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="prijmeni" class="textPole" />
-                    <span asp-validation-for="prijmeni" class="text-danger"></span>
-                </div>
-
-                <div class="mN">
-                    <label asp-for="stredisko">Středisko</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="stredisko" class="textPole" />
-                    <span asp-validation-for="stredisko" class="text-danger"></span>
-                </div>
-
-                <div class="mN">
-                    <label asp-for="email">Email</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="email" class="textPole" />
-                    <span asp-validation-for="email" class="text-danger"></span>
-                </div>
-
-                <div class="mN">
-                    <label asp-for="idJazyka">Jazyk</label>
-                </div>
-                <div class="mD">
-                    <select asp-for="jazyk" asp-items="ViewBag.idJazyka" class="textPole"></select>
-                </div>
-
-                <div class="mN">
-                    <label asp-for="nt">NT účet</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="nt" class="textPole" />
-                    <span asp-validation-for="nt" class="text-danger"></span>
-                </div>
-
-                <div class="mN">
-                    <label asp-for="heslo">heslo</label>
-                </div>
-                <div class="mD">
-                    <input asp-for="heslo" class="textPole" />
-                    <span asp-validation-for="heslo" class="text-danger"></span>
+        <div>
+            <div class="mN">
+                <label asp-for="jmeno">Jméno</label>
+            </div>
+            <div class="detailBlok">
+                <div class="detailSEditem">
+                    <div class="mD">
+                        <input asp-for="jmeno" class="textPole" readonly="readonly" />
+                    </div>
+                    <div id="edit">
+                        <a asp-action="Edit" asp-route-id="@Model.idUzivatele"><div id="editIkona"></div></a>
+                    </div>
                 </div>
             </div>
-            <div id="tlacitkaPopisku">
-                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            <div class="mN">
+                <label asp-for="prijmeni">Příjmení</label>
             </div>
-        </form>
+            <div class="mD">
+                <input asp-for="prijmeni" class="textPole" />
+                <span asp-validation-for="prijmeni" class="text-danger"></span>
+            </div>
+            <div class="mN">
+                <label asp-for="stredisko">Středisko</label>
+            </div>
+            <div class="mD">
+                <input asp-for="stredisko" class="textPole" />
+                <span asp-validation-for="stredisko" class="text-danger"></span>
+            </div>
+            <div class="mN">
+                <label asp-for="email">E-mail</label>
+            </div>
+            <div class="mD">
+                <input asp-for="email" class="textPole" readonly="readonly" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="mN">
+                <label asp-for="jazyk.nazev">Jazyk</label>
+            </div>
+            <div class="mD">
+                <input asp-for="jazyk.nazev" class="textPole" readonly="readonly" />
+                <span asp-validation-for="jazyk.nazev" class="text-danger"></span>
+            </div>
+        </div>
+        <div id="tlacitkaPopisku">
+            <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+
+        </div>
     </div>
 </div>
+

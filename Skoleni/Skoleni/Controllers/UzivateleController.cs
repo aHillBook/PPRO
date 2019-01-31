@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Skoleni.Models;
+using Skoleni.Services;
+using Skoleni.ViewModels;
 
 namespace Skoleni.Controllers
 {
@@ -50,8 +52,10 @@ namespace Skoleni.Controllers
         public IActionResult Create()
         {
             ViewData["adminVolba"] = 5;
-            ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka");
-            return View();
+            UzivatelViewModel vm = new UzivatelViewModel();
+
+            vm = UzivateleServ.getUzivatelBlankViewModel(_context);
+            return View(vm);
         }
 
         // POST: Uzivatele/Create
@@ -59,7 +63,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka,nt,heslo")] Uzivatel uzivatel)
+        public async Task<IActionResult> Create([Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka")] Uzivatel uzivatel)
         {
             ViewData["adminVolba"] = 5;
             if (ModelState.IsValid)
@@ -86,8 +90,12 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-            ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", uzivatel.idJazyka);
-            return View(uzivatel);
+            UzivatelViewModel vm = new UzivatelViewModel();
+
+            vm = UzivateleServ.getUzivatelFillViewModel(_context, uzivatel);
+            return View(vm);
+            //ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", uzivatel.idJazyka);
+            //return View(uzivatel);
         }
 
         // POST: Uzivatele/Edit/5
@@ -95,7 +103,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka,nt,heslo")] Uzivatel uzivatel)
+        public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka")] Uzivatel uzivatel)
         {
             ViewData["adminVolba"] = 5;
             if (id != uzivatel.idUzivatele)
