@@ -15,18 +15,9 @@ namespace Skoleni.Controllers
         public IActionResult About()
         {
             ViewData["mainVolba"] = 1;
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["mainVolba"] = 1;
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
 
         public IActionResult Privacy()
         {
