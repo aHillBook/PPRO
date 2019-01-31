@@ -1,22 +1,50 @@
-﻿@model Skoleni.Models.POpravneni
+﻿@using Skoleni.Models;
+@model POpravneni
 
 @{
-    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>POpravneni</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="idUzivatele" />
-        <input type="hidden" asp-for="idRole" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="pozadiUvodu">
+    <div class="pozadi-zeleno-zelena">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Vymazání uživatele</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
 </div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <input type="hidden" asp-for="idUzivatele" />
+                    <input type="hidden" asp-for="idRole" />
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.jmeno">Jméno</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.jmeno" class="textPole" readonly="readonly" />
+                    <span asp-validation-for="uzivatel.jmeno" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="role.nazev">Jazyk</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="role.nazev" class="textPole" readonly="readonly" />
+                    <span asp-validation-for="role.nazev" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Smazat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>
+

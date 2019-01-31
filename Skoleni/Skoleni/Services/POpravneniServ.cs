@@ -10,7 +10,7 @@ namespace Skoleni.Services
 {
     public class POpravneniServ
     {
-        public static POpravneniViewModel getSeznamUzivateluViewModel(DB context)
+        public static POpravneniViewModel getSeznamOpravneniViewModel(DB context)
         {
             POpravneniViewModel vm = new POpravneniViewModel();
 
@@ -22,10 +22,6 @@ namespace Skoleni.Services
             POpravneniViewModel vm = new POpravneniViewModel();
 
             vm.opravneni = new POpravneni();
-            vm.opravneni.uzivatel = new Uzivatel();
-            vm.opravneni.role = new PRole();
-            vm.opravneni.idUzivatele = 1;
-            var y = context.seznamRoli.Count();
 
             var kolekceUzivatelu = context.seznamUzivatelu.OrderBy(a => a.prijmeni).Select(b => new { Id = b.idUzivatele, Value = b.prijmeni + " " + b.jmeno });
             vm.seznamUzivatelu = new SelectList(kolekceUzivatelu, "Id", "Value");
@@ -35,19 +31,29 @@ namespace Skoleni.Services
 
             return vm;
         }
-        //public static POpravneniViewModel getUzivatelFillViewModel(DB context, Uzivatel uzivatel)
-        //{
-        //    POpravneniViewModel vm = new POpravneniViewModel();
+        public static POpravneniViewModel getOpravneniViewModel(DB context)
+        {
+            POpravneniViewModel vm = new POpravneniViewModel();
+            vm.opravneni = new POpravneni();
 
-        //    vm.uzivatel = uzivatel;
+            return vm;
+        }
+        public static POpravneniViewModel getOpravneniFillViewModel(DB context, POpravneni opravneni)
+        {
+            POpravneniViewModel vm = new POpravneniViewModel();
 
-        //    var y = context.seznamJazyku.Count();
+            vm.opravneni = opravneni;
+            vm.idRole = opravneni.idRole;
+            vm.idUzivatele = opravneni.idUzivatele;
+            vm.opravneni.uzivatel =  context.seznamUzivatelu
+                .FirstOrDefault(m => m.idUzivatele == opravneni.idUzivatele);
+            vm.opravneni.uzivatel.jmeno = vm.opravneni.uzivatel.jmeno + " " + vm.opravneni.uzivatel.prijmeni;
 
-        //    var kolekceJazyku = context.seznamJazyku.OrderBy(a => a.nazev).Select(b => new { Id = b.idJazyka, Value = b.nazev });
-        //    vm.seznamJazyku = new SelectList(kolekceJazyku, "Id", "Value");
+            var kolekceRoli = context.seznamRoli.OrderBy(a => a.nazev).Select(b => new { Id = b.idRole, Value = b.nazev });
+            vm.seznamRoli = new SelectList(kolekceRoli, "Id", "Value");
 
 
-        //    return vm;
-        //}
+            return vm;
+        }
     }
 }

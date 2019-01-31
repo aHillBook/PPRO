@@ -47,14 +47,13 @@
                 </td>
                 <td style="display: flex; margin-top:-1px;padding-top:10px;">
                     <div id="edit">
-                        <a asp-action="Edit" asp-route-id="@item"><div id="editIkona"></div></a>
+                        <a asp-action="Edit" asp-route-id="@item.idUzivatele"><div id="editIkona"></div></a>
                     </div>
-
                     <div id="detail">
-                        <a asp-action="Details" asp-route-id="@item"><div id="detailIkona"></div></a>
+                        <a asp-action="Details" asp-route-id="@item.idUzivatele"><div id="detailIkona"></div></a>
                     </div>
                     <div id="delete">
-                        <a asp-action="Delete" asp-route-id="@item"><div id="deleteIkona"></div></a>
+                        <a asp-action="Delete" asp-route-id="@item.idUzivatele"><div id="deleteIkona"></div></a>
                     </div>
                 </td>
             </tr>

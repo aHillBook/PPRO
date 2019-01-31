@@ -30,6 +30,17 @@
                     <span asp-validation-for="idUzivatele" class="text-danger"></span>
                 </div>
             </div>
+            <div>
+                <div class="mN">
+                    <label asp-for="seznamRoli">Uživatel</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="idRole" asp-items="@Model.seznamRoli" class="textPole">
+                        <option>Vyberte prosím jazyk...</option>
+                    </select>
+                    <span asp-validation-for="idRole" class="text-danger"></span>
+                </div>
+            </div>
             <div id="tlacitkaPopisku">
                 <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
                 <a asp-action="Index" class="tlacitkoReset">Zpět</a>

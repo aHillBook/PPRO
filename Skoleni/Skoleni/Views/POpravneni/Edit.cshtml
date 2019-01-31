@@ -1,28 +1,52 @@
-﻿@model Skoleni.Models.POpravneni
+﻿@using Skoleni.ViewModels;
+@model POpravneniViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
-<h4>POpravneni</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="idUzivatele" />
-            <input type="hidden" asp-for="idRole" />
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+<div class="pozadiUvodu">
+    <div class="pozadi-modro-modra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Editovat oprávnění</h1>
             </div>
-        </form>
+        </div>
+        <div class="vyvysenyBod"></div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="opravneni.uzivatel.jmeno">Jméno</label>
+                    <input type="hidden" asp-for="idUzivatele" />
+                </div>
+                <div class="mD">
+                    <input asp-for="opravneni.uzivatel.jmeno" class="textPole" readonly="readonly" />
+                    <span asp-validation-for="opravneni.uzivatel.jmeno" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <div class="mN">
+                    <label asp-for="seznamRoli">Uživatel</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="idRole" asp-items="@Model.seznamRoli" class="textPole">
+                        <option>Vyberte prosím oprávnění...</option>
+                    </select>
+                    <span asp-validation-for="idRole" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
 </div>
 
 @section Scripts {

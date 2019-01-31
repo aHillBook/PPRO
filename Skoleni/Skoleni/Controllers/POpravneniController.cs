@@ -24,7 +24,11 @@ namespace Skoleni.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["adminVolba"] = 6;
-            return View(await _context.seznamOpravneni.ToListAsync());
+            var vm = POpravneniServ.getSeznamOpravneniViewModel(_context);
+
+            var dB = _context.seznamOpravneni.Include(u => u.uzivatel).Include(d=>d.role);
+            return View(await dB.ToListAsync());
+            //return View(vm);
         }
 
         // GET: POpravneni/Details/5
@@ -42,7 +46,16 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-
+            else
+            {
+                pOpravneni.uzivatel = await _context.seznamUzivatelu
+                .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
+                pOpravneni.role = await _context.seznamRoli
+                    .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
+                pOpravneni.uzivatel.jmeno = pOpravneni.uzivatel.jmeno + " " + pOpravneni.uzivatel.prijmeni;
+                pOpravneni.idRole = pOpravneni.role.idRole;
+                pOpravneni.idUzivatele = pOpravneni.uzivatel.idUzivatele;
+            }
             return View(pOpravneni);
         }
 
@@ -68,7 +81,6 @@ namespace Skoleni.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //return View(pOpravneni);
             ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
             ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
             return View(pOpravneni);
@@ -83,12 +95,17 @@ namespace Skoleni.Controllers
                 return NotFound();
             }
 
-            var pOpravneni = await _context.seznamOpravneni.FindAsync(id);
+            var pOpravneni = await _context.seznamOpravneni
+                .FirstOrDefaultAsync(m => m.idUzivatele == id);
+
             if (pOpravneni == null)
             {
                 return NotFound();
             }
-            return View(pOpravneni);
+            POpravneniViewModel vm = new POpravneniViewModel();
+
+            vm = POpravneniServ.getOpravneniFillViewModel(_context, pOpravneni);
+            return View(vm);
         }
 
         // POST: POpravneni/Edit/5
@@ -103,7 +120,10 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-
+            pOpravneni.uzivatel = await _context.seznamUzivatelu
+               .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
+            pOpravneni.role = await _context.seznamRoli
+                .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
             if (ModelState.IsValid)
             {
                 try
@@ -124,6 +144,8 @@ namespace Skoleni.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
+            ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
             return View(pOpravneni);
         }
 
@@ -138,9 +160,20 @@ namespace Skoleni.Controllers
 
             var pOpravneni = await _context.seznamOpravneni
                 .FirstOrDefaultAsync(m => m.idUzivatele == id);
+            
             if (pOpravneni == null)
             {
                 return NotFound();
+            }
+            else
+            {
+                pOpravneni.uzivatel = await _context.seznamUzivatelu
+                .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
+                pOpravneni.role = await _context.seznamRoli
+                    .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
+                pOpravneni.uzivatel.jmeno = pOpravneni.uzivatel.jmeno + " " + pOpravneni.uzivatel.prijmeni;
+                pOpravneni.idRole = pOpravneni.role.idRole;
+                pOpravneni.idUzivatele = pOpravneni.uzivatel.idUzivatele;
             }
 
             return View(pOpravneni);
@@ -149,10 +182,11 @@ namespace Skoleni.Controllers
         // POST: POpravneni/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(POpravneni o)
         {
             ViewData["adminVolba"] = 6;
-            var pOpravneni = await _context.seznamOpravneni.FindAsync(id);
+
+            var pOpravneni = await _context.seznamOpravneni.FindAsync(o.idUzivatele, o.idRole);
             _context.seznamOpravneni.Remove(pOpravneni);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
