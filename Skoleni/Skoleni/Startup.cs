@@ -36,7 +36,7 @@ namespace Skoleni
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            //var connection = @"Server=(localdb)\mssqllocaldb;Database=SkoleniDb;Trusted_Connection=True;ConnectRetryCount=0";
+            //var connection = @"Server=(l  ocaldb)\mssqllocaldb;Database=SkoleniDb;Trusted_Connection=True;ConnectRetryCount=0";
 
             //var connection = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\PPRO\SkoleniDb.mdf; Integrated Security = True; Connect Timeout = 30";
 
