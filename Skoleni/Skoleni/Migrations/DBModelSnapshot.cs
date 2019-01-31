@@ -62,13 +62,13 @@ namespace Skoleni.Migrations
 
             modelBuilder.Entity("Skoleni.Models.PRole", b =>
                 {
-                    b.Property<int>("idJazyka")
+                    b.Property<int>("idRole")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("nazev");
 
-                    b.HasKey("idJazyka");
+                    b.HasKey("idRole");
 
                     b.ToTable("seznamRoli");
                 });
@@ -125,7 +125,7 @@ namespace Skoleni.Migrations
 
                     b.Property<string>("heslo");
 
-                    b.Property<int>("idJazyka");
+                    b.Property<int>("idRole");
 
                     b.Property<string>("jmeno");
 
@@ -137,7 +137,7 @@ namespace Skoleni.Migrations
 
                     b.HasKey("idUzivatele");
 
-                    b.HasIndex("idJazyka");
+                    b.HasIndex("idRole");
 
                     b.ToTable("seznamUzivatelu");
                 });

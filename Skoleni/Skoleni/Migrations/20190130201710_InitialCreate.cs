@@ -52,13 +52,13 @@ namespace Skoleni.Migrations
                 name: "seznamRoli",
                 columns: table => new
                 {
-                    idJazyka = table.Column<int>(nullable: false)
+                    idRole = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     nazev = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_seznamRoli", x => x.idJazyka);
+                    table.PrimaryKey("PK_seznamRoli", x => x.idRole);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,7 +85,7 @@ namespace Skoleni.Migrations
                     prijmeni = table.Column<string>(nullable: true),
                     stredisko = table.Column<int>(nullable: false),
                     email = table.Column<string>(nullable: true),
-                    idJazyka = table.Column<int>(nullable: false),
+                    idRole = table.Column<int>(nullable: false),
                     nt = table.Column<string>(nullable: true),
                     heslo = table.Column<string>(nullable: true)
                 },
@@ -93,10 +93,10 @@ namespace Skoleni.Migrations
                 {
                     table.PrimaryKey("PK_seznamUzivatelu", x => x.idUzivatele);
                     table.ForeignKey(
-                        name: "FK_seznamUzivatelu_seznamJazyku_idJazyka",
-                        column: x => x.idJazyka,
+                        name: "FK_seznamUzivatelu_seznamJazyku_idRole",
+                        column: x => x.idRole,
                         principalTable: "seznamJazyku",
-                        principalColumn: "idJazyka",
+                        principalColumn: "idRole",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -178,9 +178,9 @@ namespace Skoleni.Migrations
                 column: "idSkoleni");
 
             migrationBuilder.CreateIndex(
-                name: "IX_seznamUzivatelu_idJazyka",
+                name: "IX_seznamUzivatelu_idRole",
                 table: "seznamUzivatelu",
-                column: "idJazyka");
+                column: "idRole");
 
             migrationBuilder.CreateIndex(
                 name: "IX_seznamZaznamu_idTerminu",

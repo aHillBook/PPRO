@@ -1,0 +1,67 @@
+﻿@using Skoleni.Models;
+@model IEnumerable<POpravneni>
+
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-cerveno-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Seznam oprávnění</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<p>
+    <div id="novy">
+        <a asp-action="Create"><div id="novyIkona"></div></a>
+    </div>
+</p>
+
+<div class="seznamKmu">
+    <table id="tabulkaKmu">
+        <thead>
+            <tr>
+                <th>Jméno</th>
+                <th>Příjmení</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr id="hlavniRadek">
+                <td>
+                    @Html.DisplayFor(modelItem => item.uzivatel.jmeno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.uzivatel.prijmeni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.role.nazev)
+                </td>
+                <td style="display: flex; margin-top:-1px;padding-top:10px;">
+                    <div id="edit">
+                        <a asp-action="Edit" asp-route-id="@item"><div id="editIkona"></div></a>
+                    </div>
+
+                    <div id="detail">
+                        <a asp-action="Details" asp-route-id="@item"><div id="detailIkona"></div></a>
+                    </div>
+                    <div id="delete">
+                        <a asp-action="Delete" asp-route-id="@item"><div id="deleteIkona"></div></a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="novyIkonaNapoveda">
+    Přidat oprávnění
+</div>

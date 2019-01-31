@@ -1,0 +1,43 @@
+﻿@using Skoleni.ViewModels;
+@model POpravneniViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="pozadiUvodu">
+    <div class="pozadi-modro-modra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Přiřadit oprávnění</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="seznamUzivatelu">Uživatel</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="opravneni.idUzivatele" asp-items="@Model.seznamUzivatelu" class="textPole">
+                        <option>Vyberte prosím jazyk...</option>
+                    </select>
+                    <span asp-validation-for="opravneni.idUzivatele" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -9,7 +9,7 @@ namespace Skoleni.Models
     public class PRole
     {
         [Key]
-        public int idJazyka { get; set; }
+        public int idRole { get; set; }
         public string nazev { get; set; }
     }
 }

@@ -13,8 +13,7 @@ namespace Skoleni.Models
         public int idUzivatele { get; set; }
         [Key, Column(Order = 1)]
         public int idRole { get; set; }
-        
-        Uzivatel uzivatel { get; set; }
-        PRole role { get; set; }
+        public Uzivatel uzivatel { get; set; }
+        public PRole role { get; set; }
     }
 }
