@@ -56,7 +56,7 @@ namespace Skoleni.Controllers
             ViewData["mainVolba"] = 0;
             if (nt != null && heslo != null)
             {
-                var uzivatel = await _context.seznamUzivatelu.FirstOrDefaultAsync(m => m.heslo.Equals(heslo) && m.nt.Equals("nt"));
+                var uzivatel = await _context.seznamUzivatelu.FirstOrDefaultAsync(m => m.heslo.Equals(heslo) && m.nt.Equals(nt));
 
                 if (uzivatel != null)
                 {

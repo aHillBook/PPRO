@@ -2,30 +2,65 @@
 @model Termin
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="pozadiUvodu">
+    <div class="pozadi-fialovo-modra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Podrobnosti - termín</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
 
-<div>
-    <h4>Termin</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.terminKonani)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.terminKonani)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.dobaTrvani)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.dobaTrvani)
-        </dd>
-    </dl>
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <div>
+            <div class="mN">
+                <label asp-for="terminKonani">Termín</label>
+            </div>
+            <div class="detailBlok">
+                <div class="detailSEditem">
+                    <div class="mD">
+                        <input asp-for="terminKonani" class="textPole" readonly="readonly" />
+                    </div>
+                    <div id="edit">
+                        <a asp-action="Edit" asp-route-id="@Model.idTerminu"><div id="editIkona"></div></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mN">
+                <label asp-for="skoleni.nazev">Školení</label>
+            </div>
+            <div class="mD">
+                <input asp-for="skoleni.nazev" class="textPole" readonly="readonly" />
+            </div>
+            <div class="mN">
+                <label asp-for="mistnost.nazev">Místnost</label>
+            </div>
+            <div class="mD">
+                <input asp-for="mistnost.nazev" class="textPole" readonly="readonly" />
+            </div>
+            <div class="mN">
+                <label asp-for="dobaTrvani">Doba trvání</label>
+            </div>
+            <div class="mD">
+                <input asp-for="dobaTrvani" class="textPole" readonly="readonly" />
+            </div>
+            <div class="mN">
+                <label asp-for="jazyk.nazev">Jazyk</label>
+            </div>
+            <div class="mD">
+                <input asp-for="jazyk.nazev" class="textPole" readonly="readonly" />
+            </div>
+        </div>
+        <div id="tlacitkaPopisku">
+            <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.idTerminu">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

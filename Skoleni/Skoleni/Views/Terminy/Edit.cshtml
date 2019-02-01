@@ -1,37 +1,75 @@
-﻿@using Skoleni.Models;
-@model Termin
+﻿@using Skoleni.ViewModels;
+@model TerminViewModel
 
-    ViewData["Title"] = "Edit";
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
-<h4>Termin</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="idTerminu" />
-            <div class="form-group">
-                <label asp-for="terminKonani" class="control-label"></label>
-                <input asp-for="terminKonani" class="form-control" />
-                <span asp-validation-for="terminKonani" class="text-danger"></span>
+<div class="pozadiUvodu">
+    <div class="pozadi-fialovo-modra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Editace uživatele</h1>
             </div>
-            <div class="form-group">
-                <label asp-for="dobaTrvani" class="control-label"></label>
-                <input asp-for="dobaTrvani" class="form-control" />
-                <span asp-validation-for="dobaTrvani" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
+        <div class="vyvysenyBod"></div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="termin.terminKonani">Termín konání</label>
+                    <input type="hidden" asp-for="termin.idTerminu" />
+                </div>
+                <div class="mD">
+                    <input asp-for="termin.terminKonani" class="textPole" />
+                    <span asp-validation-for="termin.terminKonani" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="seznamSkoleni">Školení</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="termin.idSkoleni" asp-items="@Model.seznamSkoleni" class="textPole">
+                        <option>Vyberte prosím školení...</option>
+                    </select>
+                    <span asp-validation-for="termin.idSkoleni" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="seznamSkoleni">Místnost</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="termin.idMistnosti" asp-items="@Model.seznamMistnosti" class="textPole">
+                        <option>Vyberte prosím místnost...</option>
+                    </select>
+                    <span asp-validation-for="termin.idMistnosti" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="termin.dobaTrvani">Doba trvání(min)</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="termin.dobaTrvani" class="textPole" />
+                    <span asp-validation-for="termin.dobaTrvani" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="seznamJazyku">Jazyk</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="termin.idJazyka" asp-items="@Model.seznamJazyku" class="textPole">
+                        <option>Vyberte prosím jazyk...</option>
+                    </select>
+                    <span asp-validation-for="termin.idJazyka" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
 </div>
 
 @section Scripts {

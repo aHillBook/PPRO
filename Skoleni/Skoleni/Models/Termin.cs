@@ -10,6 +10,7 @@ namespace Skoleni.Models
     {
         [Key]
         public int idTerminu { get; set; }
+        [DisplayFormat(DataFormatString = @"{0:dd\.MM\.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime terminKonani { get; set; }
         public int dobaTrvani { get; set; }
 

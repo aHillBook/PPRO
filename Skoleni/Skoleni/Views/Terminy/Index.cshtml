@@ -1,20 +1,20 @@
-﻿@using Skoleni.Models;
+﻿@using Skoleni.ViewModels;
 @model IEnumerable<Termin>
-
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="pozadiUvodu">
-    <div class="pozadi-modro-modra">
+    <div class="pozadi-fialovo-modra">
         <div class="nadpis">
             <div class="nadpis-blok">
-                <h1 class="nadpis-blok-h1">Seznam školení</h1>
+                <h1 class="nadpis-blok-h1">Seznam termínů</h1>
             </div>
         </div>
         <div class="vyvysenyBod"></div>
     </div>
 </div>
+
 <p>
     <div id="novy">
         <a asp-action="Create"><div id="novyIkona"></div></a>
@@ -25,46 +25,50 @@
     <table id="tabulkaKmu">
         <thead>
             <tr>
-                <th>Školení</th>
                 <th>Termín</th>
+                <th>Školení</th>
+                <th>Místnost</th>
                 <th>Doba trvání</th>
                 <th>jazyk</th>
-                <th>Možnosti</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
-                <tr id="hlavniRadek">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.skoleni.nazev)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.terminKonani)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.dobaTrvani)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.jazyk.nazev)
-                    </td>
-                    <td style="display: flex; margin-top:-1px;padding-top:10px;">
-                        <div id="edit">
-                            <a asp-action="Edit" asp-route-id="@item.idTerminu"><div id="editIkona"></div></a>
-                        </div>
+            <tr id="hlavniRadek">
+                <td>
+                    @Html.DisplayFor(modelItem => item.terminKonani)
+                </td>
 
-                        <div id="detail">
-                            <a asp-action="Details" asp-route-id="@item.idTerminu"><div id="detailIkona"></div></a>
-                        </div>
-                        <div id="delete">
-                            <a asp-action="Delete" asp-route-id="@item.idTerminu"><div id="deleteIkona"></div></a>
-                        </div>
-                    </td>
-                </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.skoleni.nazev)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mistnost.nazev)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dobaTrvani)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jazyk.nazev)
+                </td>
+                <td style="display: flex; margin-top:-1px;padding-top:10px;">
+                    <div id="edit">
+                        <a asp-action="Edit" asp-route-id="@item.idTerminu"><div id="editIkona"></div></a>
+                    </div>
+                    <div id="detail">
+                        <a asp-action="Details" asp-route-id="@item.idTerminu"><div id="detailIkona"></div></a>
+                    </div>
+                    <div id="delete">
+                        <a asp-action="Delete" asp-route-id="@item.idTerminu"><div id="deleteIkona"></div></a>
+                    </div>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
 </div>
 <div class="novyIkonaNapoveda">
-    Přidat nový termín
+    Přidat termín
 </div>
+
