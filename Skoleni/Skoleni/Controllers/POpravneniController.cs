@@ -113,26 +113,23 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,idRole")] POpravneni pOpravneni)
+        public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,idRole")] POpravneni o)
         {
             ViewData["adminVolba"] = 6;
-            if (id != pOpravneni.idUzivatele)
+            if (id != o.idUzivatele)
             {
                 return NotFound();
             }
-            pOpravneni.uzivatel = await _context.seznamUzivatelu
-               .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
-            pOpravneni.role = await _context.seznamRoli
-                .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
-
-
+            POpravneni test = await _context.seznamOpravneni.FirstOrDefaultAsync(m => m.idUzivatele == o.idUzivatele);
+            var pOpravneni = await _context.seznamOpravneni.FindAsync(o.idUzivatele, test.idRole);
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Entry(pOpravneni).State = EntityState.Modified;
-                    _context.Update(pOpravneni);
+                    _context.seznamOpravneni.Remove(pOpravneni);
+                    await _context.SaveChangesAsync();
+                    _context.seznamOpravneni.Add(o);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -148,12 +145,11 @@ namespace Skoleni.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
-            //ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
-            //return View(pOpravneni);
-            return Redirect("Index");
+            ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
+            ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
+            return View(pOpravneni);
         }
-
+        
         // GET: POpravneni/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
