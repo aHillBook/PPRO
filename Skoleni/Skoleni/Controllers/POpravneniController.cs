@@ -124,10 +124,14 @@ namespace Skoleni.Controllers
                .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
             pOpravneni.role = await _context.seznamRoli
                 .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
+
+
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    _context.Entry(pOpravneni).State = EntityState.Modified;
                     _context.Update(pOpravneni);
                     await _context.SaveChangesAsync();
                 }
@@ -144,9 +148,10 @@ namespace Skoleni.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
-            ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
-            return View(pOpravneni);
+            //ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
+            //ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
+            //return View(pOpravneni);
+            return Redirect("Index");
         }
 
         // GET: POpravneni/Delete/5

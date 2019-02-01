@@ -1,0 +1,55 @@
+﻿@using Skoleni.Models
+@model Uzivatel
+
+
+<div class="pozadiUvodu">
+    <div class="pozadi-cerveno-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Přihlášení</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="nt">Uživatelské jméno</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="nt" class="textPole" />
+                    <span asp-validation-for="nt" class="text-danger"></span>
+                </div>
+            </div>
+            <div>
+                <div class="mN">
+                    <label asp-for="heslo">Heslo</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="heslo" type="password" class="textPole" />
+                    <span asp-validation-for="heslo" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div>
+                <div class="mN" style="color:red;">
+                    @ViewBag.chyba
+                </div>
+            </div>
+
+
+
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>
+
