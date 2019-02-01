@@ -1,0 +1,36 @@
+﻿@model Skoleni.Models.Zaznam
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Zaznam</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.datumPrihlaseni)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.datumPrihlaseni)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.termin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.termin.idTerminu)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.uzivatel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.uzivatel.idUzivatele)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.idZaznamu">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
