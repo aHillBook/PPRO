@@ -1,0 +1,44 @@
+﻿@model Skoleni.Models.Zaznam
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Zaznam</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="idZaznamu" />
+            <div class="form-group">
+                <label asp-for="idTerminu" class="control-label"></label>
+                <select asp-for="idTerminu" class="form-control" asp-items="ViewBag.idTerminu"></select>
+                <span asp-validation-for="idTerminu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="idUzivatele" class="control-label"></label>
+                <select asp-for="idUzivatele" class="form-control" asp-items="ViewBag.idUzivatele"></select>
+                <span asp-validation-for="idUzivatele" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="datumPrihlaseni" class="control-label"></label>
+                <input asp-for="datumPrihlaseni" class="form-control" />
+                <span asp-validation-for="datumPrihlaseni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
