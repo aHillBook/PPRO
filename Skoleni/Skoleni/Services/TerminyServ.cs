@@ -24,17 +24,33 @@ namespace Skoleni.Services
 
             vm.termin = new Termin();
 
-            var x = context.seznamSkoleni.Count();
-            var y = context.seznamJazyku.Count();
-
-
             var kolekceSkoleni = context.seznamSkoleni.OrderBy(a => a.nazev).Select(b => new { Id = b.idSkoleni, Value = b.nazev });
             vm.seznamSkoleni = new SelectList(kolekceSkoleni, "Id", "Value");
+
+            var kolekceMistnosti = context.seznamMistnosti.OrderBy(a => a.nazev).Select(b => new { Id = b.idMistnosti, Value = b.nazev });
+            vm.seznamMistnosti = new SelectList(kolekceMistnosti, "Id", "Value");
 
             var kolekceJazyku = context.seznamJazyku.OrderBy(a => a.nazev).Select(b => new { Id = b.idJazyka, Value = b.nazev });
             vm.seznamJazyku = new SelectList(kolekceJazyku, "Id", "Value");
 
-            vm.jazyky = context.seznamJazyku.ToList();
+
+            return vm;
+        }
+
+        public static TerminViewModel getTerminFillViewModel(DB context, Termin termin)
+        {
+            TerminViewModel vm = new TerminViewModel();
+
+            vm.termin = termin;
+
+            var kolekceSkoleni = context.seznamSkoleni.OrderBy(a => a.nazev).Select(b => new { Id = b.idSkoleni, Value = b.nazev });
+            vm.seznamSkoleni = new SelectList(kolekceSkoleni, "Id", "Value");
+
+            var kolekceMistnosti = context.seznamMistnosti.OrderBy(a => a.nazev).Select(b => new { Id = b.idMistnosti, Value = b.nazev });
+            vm.seznamMistnosti = new SelectList(kolekceMistnosti, "Id", "Value");
+
+            var kolekceJazyku = context.seznamJazyku.OrderBy(a => a.nazev).Select(b => new { Id = b.idJazyka, Value = b.nazev });
+            vm.seznamJazyku = new SelectList(kolekceJazyku, "Id", "Value");
 
 
             return vm;

@@ -115,10 +115,9 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-
             uzivatel.heslo = _context.seznamUzivatelu.Where(d => d.idUzivatele == uzivatel.idUzivatele).Select(d => d.heslo).FirstOrDefault();
             uzivatel.nt = _context.seznamUzivatelu.Where(d => d.idUzivatele == uzivatel.idUzivatele).Select(d => d.nt).FirstOrDefault();
-
+            
             if (ModelState.IsValid)
             {
                 try

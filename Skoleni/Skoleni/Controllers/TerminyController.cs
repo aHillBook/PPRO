@@ -24,7 +24,8 @@ namespace Skoleni.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["adminVolba"] = 4;
-            return View(await _context.seznamTerminu.ToListAsync());
+            var dB = _context.seznamTerminu.Include(t => t.jazyk).Include(t => t.mistnost).Include(t => t.skoleni);
+            return View(await dB.ToListAsync());
         }
 
         // GET: Terminy/Details/5
@@ -37,6 +38,9 @@ namespace Skoleni.Controllers
             }
 
             var termin = await _context.seznamTerminu
+                .Include(t => t.jazyk)
+                .Include(t => t.mistnost)
+                .Include(t => t.skoleni)
                 .FirstOrDefaultAsync(m => m.idTerminu == id);
             if (termin == null)
             {
@@ -50,10 +54,7 @@ namespace Skoleni.Controllers
         public IActionResult Create()
         {
             ViewData["adminVolba"] = 4;
-            TerminViewModel vm = new TerminViewModel();
-
-            vm = TerminyServ.getTerminBlankViewModel(_context);
-
+            TerminViewModel vm = TerminyServ.getTerminBlankViewModel(_context);
             return View(vm);
         }
 
@@ -62,7 +63,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idTerminu,terminKonani,dobaTrvani")] Termin termin)
+        public async Task<IActionResult> Create([Bind("idTerminu,terminKonani,dobaTrvani,idJazyka,idSkoleni,idMistnosti")] Termin termin)
         {
             ViewData["adminVolba"] = 4;
             if (ModelState.IsValid)
@@ -71,6 +72,9 @@ namespace Skoleni.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", termin.idJazyka);
+            ViewData["idMistnosti"] = new SelectList(_context.seznamMistnosti, "idMistnosti", "idMistnosti", termin.idMistnosti);
+            ViewData["idSkoleni"] = new SelectList(_context.seznamSkoleni, "idSkoleni", "idSkoleni", termin.idSkoleni);
             return View(termin);
         }
 
@@ -88,7 +92,8 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-            return View(termin);
+            TerminViewModel vm = TerminyServ.getTerminFillViewModel(_context, termin);
+            return View(vm);
         }
 
         // POST: Terminy/Edit/5
@@ -96,7 +101,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idTerminu,terminKonani,dobaTrvani")] Termin termin)
+        public async Task<IActionResult> Edit(int id, [Bind("idTerminu,terminKonani,dobaTrvani,idJazyka,idSkoleni,idMistnosti")] Termin termin)
         {
             ViewData["adminVolba"] = 4;
             if (id != termin.idTerminu)
@@ -124,6 +129,9 @@ namespace Skoleni.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", termin.idJazyka);
+            ViewData["idMistnosti"] = new SelectList(_context.seznamMistnosti, "idMistnosti", "idMistnosti", termin.idMistnosti);
+            ViewData["idSkoleni"] = new SelectList(_context.seznamSkoleni, "idSkoleni", "idSkoleni", termin.idSkoleni);
             return View(termin);
         }
 
@@ -137,6 +145,9 @@ namespace Skoleni.Controllers
             }
 
             var termin = await _context.seznamTerminu
+                .Include(t => t.jazyk)
+                .Include(t => t.mistnost)
+                .Include(t => t.skoleni)
                 .FirstOrDefaultAsync(m => m.idTerminu == id);
             if (termin == null)
             {

@@ -14,6 +14,7 @@ namespace Skoleni.ViewModels
         public Termin termin { get; set; }
 
         public SelectList seznamSkoleni { get; set; }
+        public SelectList seznamMistnosti { get; set; }
 
         public SelectList seznamJazyku { get; set; }
 

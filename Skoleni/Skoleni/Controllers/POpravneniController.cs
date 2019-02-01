@@ -24,7 +24,6 @@ namespace Skoleni.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["adminVolba"] = 6;
-            var vm = POpravneniServ.getSeznamOpravneniViewModel(_context);
 
             var dB = _context.seznamOpravneni.Include(u => u.uzivatel).Include(d=>d.role);
             return View(await dB.ToListAsync());
@@ -102,9 +101,7 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-            POpravneniViewModel vm = new POpravneniViewModel();
-
-            vm = POpravneniServ.getOpravneniFillViewModel(_context, pOpravneni);
+            POpravneniViewModel vm = vm = POpravneniServ.getOpravneniFillViewModel(_context, pOpravneni);
             return View(vm);
         }
 
