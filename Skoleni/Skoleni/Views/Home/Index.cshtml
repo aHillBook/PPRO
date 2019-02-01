@@ -1,15 +1,47 @@
-﻿@using Microsoft.AspNetCore.Http;
-
-@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
 
 
+<div class="pozadiUvodu">
+    <div class="pozadi-cerveno-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Školení</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
 
-lorem ipsum asfdlůkajsdfůlakjsdůflkajsůldf
 
-&nbsp;
-[@Context.Session.GetString("userName")]
-&nbsp;
 
-asdfasdf
+
+<div id="shortBlok">
+    <div style="padding: 10px; margin: 0 auto; text-align: center;">
+
+        <input type="text" id="datepicker" name="asdf" value="" />
+
+
+
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.datetimepicker.setLocale('cs');
+
+        $(document).on('mousemove', "#datepicker", function () {
+            //alert("ahoj");
+            $('#datepicker').datetimepicker({
+                format: 'd.m.Y',
+                timepicker: false,
+            });
+        });
+
+
+    });
+
+</script>
+

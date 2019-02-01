@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Skoleni.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Skoleni.Models;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,6 +60,7 @@ namespace Skoleni.Controllers
                 if (uzivatel != null)
                 {
                     HttpContext.Session.SetString("userName", uzivatel.prijmeni + " " + uzivatel.jmeno);
+                    HttpContext.Session.SetInt32("userId", uzivatel.idUzivatele);
                     return Redirect("Index");
                 }
             }
