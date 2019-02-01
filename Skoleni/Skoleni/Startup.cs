@@ -29,7 +29,8 @@ namespace Skoleni
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
+                //options.CheckConsentNeeded = context => true;
+                options.CheckConsentNeeded = context => false;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
@@ -43,6 +44,8 @@ namespace Skoleni
             var connection = @"Data Source=JH0SQL01.emea.bosch.com; Database=C:\PPRO\SKOLENIDB2.MDF;Trusted_Connection=True;ConnectRetryCount=0";
 
             services.AddDbContext<DB> (options => options.UseSqlServer(connection));
+
+            services.AddSession();
 
         }
 
@@ -62,6 +65,8 @@ namespace Skoleni
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

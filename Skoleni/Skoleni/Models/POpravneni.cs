@@ -13,7 +13,9 @@ namespace Skoleni.Models
         public int idUzivatele { get; set; }
         [Key, Column(Order = 1)]
         public int idRole { get; set; }
+        [ForeignKey("idUzivatele")]
         public Uzivatel uzivatel { get; set; }
+        [ForeignKey("idRole")]
         public PRole role { get; set; }
     }
 }
