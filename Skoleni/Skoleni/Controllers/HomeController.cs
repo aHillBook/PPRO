@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Skoleni.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Skoleni.Models;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -56,11 +55,12 @@ namespace Skoleni.Controllers
             ViewData["mainVolba"] = 0;
             if (nt != null && heslo != null)
             {
-                var uzivatel = await _context.seznamUzivatelu.FirstOrDefaultAsync(m => m.heslo.Equals(heslo) && m.nt.Equals("nt"));
+                var uzivatel = await _context.seznamUzivatelu.FirstOrDefaultAsync(m => m.heslo.Equals(heslo) && m.nt.Equals(nt));
 
                 if (uzivatel != null)
                 {
                     HttpContext.Session.SetString("userName", uzivatel.prijmeni + " " + uzivatel.jmeno);
+                    HttpContext.Session.SetInt32("userId", uzivatel.idUzivatele);
                     return Redirect("Index");
                 }
             }
