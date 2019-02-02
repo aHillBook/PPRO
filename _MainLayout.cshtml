@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Aplikace Školení</title>
+
+    <link href="~/css/menicko.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/PagedList.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/frontify/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/prvky/akcniTlacitka.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/prvky/bocniTlacitka.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/prvky/seznamStyl.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/admin/tabulkaSeznam.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/kalendar/jquery.datetimepicker.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/js/jquery-3.3.1.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/Kalendar/jquery.datetimepicker.full.js"></script>
+
+</head>
+
+@{ 
+    var jmeno = Context.Session.GetString("userName");
+    var id = Context.Session.GetInt32("userId");
+}
+
+<body>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+                <li><a href="@Url.Action("Index","Home")" class="menuPolozka">Úvod</a></li>
+                <li><a href="@Url.Action("About","Home")" class="menuPolozka">O aplikaci</a></li>
+                <li><a href="@Url.Action("Privacy","Home")" class="menuPolozka">GDPR</a></li>
+                <li><hr class="carka" /></li>
+                @if (id == null || id == 0)
+                {
+                    <li><a href="@Url.Action("Login","Home")" class="menuPolozka">Přihlásit se</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("Logout","Home")" class="menuPolozka">Odhlásit se</a></li>
+                }
+            </ul>
+        </div>
+    </nav>
+
+    <div id="teloStranky">
+        <header class="hlavicka">
+            <div class="uvod">
+                <div class="blokPrubezny">
+                    <div class="blokPrubezny-radek">
+                        <div class="logo" />
+                        @if (id == null || id == 0)
+                        {
+                            <div class="role">Uživatel nepřihlášen</div>
+                        }
+                        else
+                        {
+                            <div class="role">@jmeno</div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="blokPrubezny">
+                    <div class="blokPrubezny-menu">
+                        <nav class="nav-menu">
+                            <ul>
+
+                                @if (ViewData["mainVolba"].ToString().Equals("1"))
+                                {
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Kurzy")">Seznam kurzů</a></li>
+                                }
+                                else
+                                {
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Kurzy")">Seznam kurzů</a></li>
+                                }
+
+
+                                @if (id != null && id != 0)
+                                {
+                                    if (ViewData["mainVolba"].ToString().Equals("2"))
+                                    {
+                                        <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Prihlasky")">Seznam přihlášek</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Prihlasky")">Seznam přihlášek</a></li>
+                                    }
+                                }
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <main>
+            @RenderBody()
+        </main>
+
+
+        <footer class="paticka"></footer>
+    </div>
+
+
+    @*<environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/admin/admin.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>*@
+
+
+    @*RenderSection("Scripts", required: false)*@
+
+</body>
+</html>
