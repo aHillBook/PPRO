@@ -22,7 +22,6 @@ namespace Skoleni.Services
                 d.datum = new System.DateTime(2018, 12, 20);
                 d.zaznamy = new List<Zaznam>();
 
-
                 vm.seznam.Add(d);
             }
 
@@ -35,6 +34,7 @@ namespace Skoleni.Services
 
             Den d = new Den();
             d.datum = datum;
+            vm.d = d;
 
             //vm.seznam = new List<Den>();
 
@@ -67,11 +67,26 @@ namespace Skoleni.Services
             return vm;
         }
 
-        public static DenViewModel getMesicViewModel(int idMesice, int idRoku)
+        public static DenViewModel getMesicViewModel(IQueryable<Termin> seznamTerminu)
         {
             DenViewModel vm = new DenViewModel();
 
             vm.seznam = new List<Den>();
+            vm.terminy = seznamTerminu.ToList();
+
+
+            generuj(vm, DateTime.Now.Month, DateTime.Now.Year, vm.terminy);
+
+
+            return vm;
+        }
+
+        public static DenViewModel getMesicViewModel(int idMesice, int idRoku, IQueryable<Termin> seznamTerminu)
+        {
+            DenViewModel vm = new DenViewModel();
+
+            vm.seznam = new List<Den>();
+            vm.terminy = seznamTerminu.ToList();
 
 
             generuj(vm, idMesice, idRoku, vm.terminy);
@@ -155,7 +170,7 @@ namespace Skoleni.Services
 
             int denTydne = (int)prvniDen.DayOfWeek;
 
-
+            
 
             // doplneni prazdnych bloku
             if (denTydne == 0)
@@ -182,8 +197,22 @@ namespace Skoleni.Services
                 }
                 else
                 {
+                    var t = terminy.Where(x => x.terminKonani.Equals(den.datum)).ToList();
+                    if (t.Count > 0)
+                    {
+                        den.prazdny = false;
+                        den.terminy = t;
+                        foreach (var x in t)
+                        {
+                            den.pocetVolnychMist += x.mistnost.kapacita;
+                            //den.pocetVolnychMist -= prihlasky.Where(a => a.termin.id == x.id).ToList().Count;
+                        }
+                    }
+                    else
+                    {
                         den.prazdny = true;
                         den.pocetVolnychMist = 0;
+                    }
                 }
 
 

@@ -1,0 +1,20 @@
+﻿@using Skoleni.ViewModels
+
+@model DenViewModel
+
+<link href="~/css/Kalendar/seznam.css" rel="stylesheet" type="text/css" />
+<script src="~/js/kalendar/seznam.js"></script>
+
+<div class="pozadiUvodu">
+    <div class="pozadi-fialova-tmaveModra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">@Model.d.datum.ToShortDateString()</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+<div class="seznamPolozek">
+
+</div>

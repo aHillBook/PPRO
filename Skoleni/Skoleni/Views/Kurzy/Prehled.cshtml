@@ -51,8 +51,8 @@
                         </td>*@
                     <td class="volno">
                         <div class="podkladTerminy">
-                            Počet termínů: @den.pocetVolnychMist
-                            <a href="@Url.Action("Den", "Kalendar", new { datum = den.datum })">
+                            Volných míst: @den.pocetVolnychMist
+                            <a href="@Url.Action("Den", "Kurzy", new { datum = den.datum })">
                                 <div class="podkladCisloDne">
                                     <span>@den.datum.Day</span>
                                 </div>
