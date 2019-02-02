@@ -1,41 +1,73 @@
-﻿@model Skoleni.Models.Zaznam
+﻿@using Skoleni.ViewModels;
+@model ZaznamViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Create</h2>
+<div class="pozadiUvodu">
+    <div class="pozadi-ruzovo-fialova">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Nový termín</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
 
-<h4>Zaznam</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div id="shortBlok">
+    <div style="padding: 10px;">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="idTerminu" class="control-label"></label>
-                <select asp-for="idTerminu" class ="form-control" asp-items="ViewBag.idTerminu"></select>
+            <div>
+                <div class="mN">
+                    <label asp-for="zaznam.termin.skoleni.nazev">Školení</label> 
+                </div>
+                <div class="mN">
+                    <label asp-for="@Model.seznamTerminu">Termín</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="zaznam.idTerminu" asp-items="@Model.seznamTerminu" class="textPole">
+                        <option>Vyberte prosím uživatele...</option>
+                    </select>
+                    <span asp-validation-for="zaznam.idTerminu" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="@Model.seznamUzivatelu">Uživatel</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="zaznam.idUzivatele" asp-items="@Model.seznamUzivatelu" class="textPole">
+                        <option>Vyberte prosím uživatele...</option>
+                    </select>
+                    <span asp-validation-for="zaznam.idUzivatele" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="idUzivatele" class="control-label"></label>
-                <select asp-for="idUzivatele" class ="form-control" asp-items="ViewBag.idUzivatele"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="datumPrihlaseni" class="control-label"></label>
-                <input asp-for="datumPrihlaseni" class="form-control" />
-                <span asp-validation-for="datumPrihlaseni" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.datetimepicker.setLocale('cs');
+
+        $(document).on('mousemove', "#termin_terminKonani", function () {
+            //alert("ahoj");
+            $('#termin_terminKonani').datetimepicker({
+                format: 'd.m.Y',
+                timepicker: false,
+            });
+        });
+
+
+    });
+
+</script>

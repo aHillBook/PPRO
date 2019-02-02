@@ -6,29 +6,37 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Skoleni.Models;
+using Skoleni.Services;
+using Skoleni.ViewModels;
 
 namespace Skoleni.Controllers
 {
     public class ZaznamyController : Controller
     {
+        int IDskoleni;
         private readonly DB _context;
 
         public ZaznamyController(DB context)
         {
-            ViewData["adminVolba"] = 4;
+            
             _context = context;
         }
 
         // GET: Zaznamy
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int idSkoleni)
         {
-            var dB = _context.seznamZaznamu.Include(z => z.termin).Include(z => z.uzivatel);
-            return View(await dB.ToListAsync());
-        }
+            if (idSkoleni == 0) idSkoleni = 1;
 
+            IDskoleni = idSkoleni; 
+            ViewData["adminVolba"] = 7;
+            var vm = await ZaznamyServ.getSeznamZaznamuSkoleniViewModel(_context, idSkoleni);
+
+            return View(vm);
+        }
         // GET: Zaznamy/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["adminVolba"] = 7;
             if (id == null)
             {
                 return NotFound();
@@ -47,11 +55,11 @@ namespace Skoleni.Controllers
         }
 
         // GET: Zaznamy/Create
-        public IActionResult Create()
+        public IActionResult Create([Bind("idSkoleni")]int idSkoleni)
         {
-            ViewData["idTerminu"] = new SelectList(_context.seznamTerminu, "idTerminu", "idTerminu");
-            ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele");
-            return View();
+            ViewData["adminVolba"] = 7;
+            ZaznamViewModel vm = ZaznamyServ.getZaznamBlankViewModel(_context, IDskoleni);
+            return View(vm);
         }
 
         // POST: Zaznamy/Create
@@ -61,6 +69,7 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam)
         {
+            ViewData["adminVolba"] = 7;
             if (ModelState.IsValid)
             {
                 _context.Add(zaznam);
@@ -75,6 +84,7 @@ namespace Skoleni.Controllers
         // GET: Zaznamy/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["adminVolba"] = 7;
             if (id == null)
             {
                 return NotFound();
@@ -85,9 +95,8 @@ namespace Skoleni.Controllers
             {
                 return NotFound();
             }
-            ViewData["idTerminu"] = new SelectList(_context.seznamTerminu, "idTerminu", "idTerminu", zaznam.idTerminu);
-            ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", zaznam.idUzivatele);
-            return View(zaznam);
+            ZaznamViewModel vm = ZaznamyServ.getZaznamFillViewModel(_context, zaznam);
+            return View(vm);
         }
 
         // POST: Zaznamy/Edit/5
@@ -97,6 +106,7 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam)
         {
+            ViewData["adminVolba"] = 7;
             if (id != zaznam.idZaznamu)
             {
                 return NotFound();
@@ -130,6 +140,7 @@ namespace Skoleni.Controllers
         // GET: Zaznamy/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["adminVolba"] = 7;
             if (id == null)
             {
                 return NotFound();
@@ -152,6 +163,7 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewData["adminVolba"] = 7;
             var zaznam = await _context.seznamZaznamu.FindAsync(id);
             _context.seznamZaznamu.Remove(zaznam);
             await _context.SaveChangesAsync();
