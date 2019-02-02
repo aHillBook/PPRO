@@ -19,6 +19,9 @@
     <div id="novy">
         <a asp-action="Create"><div id="novyIkona"></div></a>
     </div>
+    <div id="kmu">
+        <a asp-action="Index" asp-controller="Home"><div id="kmuIkona"></div></a>
+    </div>
 </p>
 
 <div class="seznamKmu">
@@ -38,7 +41,7 @@
                     </td>
                     <td style="display: flex; margin-top:-1px;padding-top:10px;">
                         <div id="edit">
-                            <a asp-action="Edit" asp-route-id="@item.idJazyka"><div id="editIkona"></div></a> 
+                            <a asp-action="Edit" asp-route-id="@item.idJazyka"><div id="editIkona"></div></a>
                         </div>
 
                         <div id="detail">
@@ -48,15 +51,16 @@
                             <a asp-action="Delete" asp-route-id="@item.idJazyka"><div id="deleteIkona"></div></a>
                         </div>
                     </td>
-        </tr>
-    }
-            </tbody>
-            </table>
-        </div>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <div class="novyIkonaNapoveda">
     Přidat nový jazyk
 </div>
-
-
+<div class="kmuIkonaNapoveda">
+    Zpět na hlavní nabídku
+</div>
 
 

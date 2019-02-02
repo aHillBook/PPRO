@@ -1,7 +1,7 @@
 ﻿@model Skoleni.Models.Zaznam
 
 @{
-    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -30,7 +30,7 @@
             @Html.DisplayFor(model => model.uzivatel.idUzivatele)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="idZaznamu" />
         <input type="submit" value="Delete" class="btn btn-default" /> |
