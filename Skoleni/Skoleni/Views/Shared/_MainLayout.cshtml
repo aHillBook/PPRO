@@ -45,14 +45,7 @@
                 <li><a href="@Url.Action("About","Home")" class="menuPolozka">O aplikaci</a></li>
                 <li><a href="@Url.Action("Privacy","Home")" class="menuPolozka">GDPR</a></li>
                 <li><hr class="carka" /></li>
-                @if (id == null || id == 0)
-                {
-                    <li><a href="@Url.Action("Login","Home")" class="menuPolozka">Přihlásit se</a></li>
-                }
-                else
-                {
-                    <li><a href="@Url.Action("Logout","Home")" class="menuPolozka">Odhlásit se</a></li>
-                }
+                <li><a href="@Url.Action("Login","Home")" class="menuPolozka">Přihlásit se</a></li>
             </ul>
         </div>
     </nav>
@@ -63,13 +56,9 @@
                 <div class="blokPrubezny">
                     <div class="blokPrubezny-radek">
                         <div class="logo" />
-                        @if (id == null || id == 0)
+                        @if (true)
                         {
                             <div class="role">Uživatel nepřihlášen</div>
-                        }
-                        else
-                        {
-                            <div class="role">@jmeno</div>
                         }
                     </div>
                 </div>

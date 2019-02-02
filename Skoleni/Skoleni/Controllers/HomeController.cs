@@ -67,13 +67,5 @@ namespace Skoleni.Controllers
             ViewBag.chyba = "Nesprávné údaje";
             return View();
         }
-
-        public IActionResult Logout()
-        {
-            ViewData["mainVolba"] = 0;
-            HttpContext.Session.Clear();
-            return Redirect("Index");
-
-        }
     }
 }
