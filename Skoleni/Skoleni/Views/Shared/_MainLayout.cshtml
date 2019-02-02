@@ -71,11 +71,11 @@
 
                                 @if (ViewData["mainVolba"].ToString().Equals("1"))
                                 {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Kurzy")">Seznam kurzů</a></li>
+                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Prehled","Kurzy")">Seznam kurzů</a></li>
                                 }
                                 else
                                 {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Kurzy")">Seznam kurzů</a></li>
+                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Prehled","Kurzy")">Seznam kurzů</a></li>
                                 }
 
 

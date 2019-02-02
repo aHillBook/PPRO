@@ -1,0 +1,98 @@
+﻿@using Skoleni.ViewModels
+
+@model DenViewModel
+
+<link href="~/css/Kalendar/seznam.css" rel="stylesheet" type="text/css" />
+<script src="~/js/kalendar/seznam.js"></script>
+
+<div class="pozadiUvodu">
+    <div class="pozadi-fialova-tmaveModra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">@Model.aktualniMesic @Model.aktualniRok</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+<div class="seznamPolozek">
+    <table>
+        <thead>
+            <tr>
+                <th>Pondeli</th>
+                <th>Utery</th>
+                <th>Streda</th>
+                <th>Ctvrtek</th>
+                <th>Patek</th>
+                <th>Sobota</th>
+                <th>Nedele</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                @{
+                    foreach (var den in Model.seznam)
+                    {
+                        {
+                            if (den.nic)
+                            {
+                    <td class="nic"></td>
+                            }
+                            else if (den.prazdny)
+                            {
+                    <td class="prazdno">@den.datum.Day</td>
+                            }
+                            else
+                            {
+                    @*<td class="volno">
+                            <div class="denMesice">@den.datum.Day</div>
+                            <div class="terminy">@den.terminy.Count</div>
+                        </td>*@
+                    <td class="volno">
+                        <div class="podkladTerminy">
+                            Počet termínů: @den.pocetVolnychMist
+                            <a href="@Url.Action("Den", "Kalendar", new { datum = den.datum })">
+                                <div class="podkladCisloDne">
+                                    <span>@den.datum.Day</span>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                            }
+                        }
+                        if (!den.nic && den.denTydne == 0)
+                        {
+                @:</tr><tr>
+                        }
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div id="dialog" style="display:none;"></div>
+
+<div id="odspodu" />
+
+<!--   ********************************************************************************************   -->
+
+<div id="admin">
+    <div id="adminIkona"></div>
+</div>
+<div class="adminIkonaNapoveda">Administrace</div>
+
+<div id="doleva">
+    <a href="@Url.Action("Prehled", "Kurzy", new { idMesice = Model.idPredchoziMesic, idRoku = Model.predchoziRok })">
+        <div id="dolevaIkona"></div>
+    </a>
+</div>
+<div class="dolevaIkonaNapoveda">@Model.predchoziMesic</div>
+
+<div id="doprava">
+    <a href="@Url.Action("Prehled", "Kurzy", new { idMesice = Model.idNasledujiciMesic, idRoku = Model.nasledujiciRok })">
+        <div id="dopravaIkona"></div>
+    </a>
+</div>
+<div class="dopravaIkonaNapoveda">@Model.nasledujiciMesic</div>
+

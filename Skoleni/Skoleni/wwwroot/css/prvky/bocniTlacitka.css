@@ -132,7 +132,7 @@
 
 /*                Tlacitko Admin - presun do administracni casti                */
 #admin {
-    position: fixed;
+    position: absolute;
     float: right;
     z-index: 10;
     top: 340px;
@@ -167,6 +167,7 @@
 
 
 .adminIkonaNapoveda {
+    position: absolute;
     width: 130px;
     height: 60px;
     text-align: center;
@@ -177,7 +178,6 @@
     background: #fff;
     border-radius: 10px;
     border: 1px solid #e10015;
-    position: fixed;
     top: 335px;
     right: 70px;
     display: none;
@@ -814,3 +814,134 @@
         width: 30px;
         height: 30px;
     }
+
+
+#doleva {
+    position: absolute;
+    float: left;
+    top: 820px;
+    left: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #525f6b;
+    background-color: white;
+}
+
+    #doleva:hover {
+        border-color: black;
+    }
+
+#dolevaIkona {
+    background-image: url(/doktori/Images/Frontify/Bosch-IC-back-left-darkgray.png), url(/Images/Frontify/Bosch-IC-back-left-darkgray.png);
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+}
+
+    #dolevaIkona:hover {
+        background-image: url(/doktori/Images/Frontify/Bosch-IC-back-left.png), url(/Images/Frontify/Bosch-IC-back-left.png);
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+    }
+
+.dolevaIkonaNapoveda {
+    width: 130px;
+    height: 60px;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    top: 810px;
+    left: 70px;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+
+    .dolevaIkonaNapoveda:after {
+        content: " ";
+        position: absolute;
+        bottom: 30%; /* At the top of the tooltip */
+        right: 100%;
+        margin-right: 0px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent black transparent transparent;
+    }
+
+
+#doprava {
+    position: absolute;
+    float: right;
+    top: 820px;
+    right: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #525f6b;
+    background-color: white;
+}
+
+    #doprava:hover {
+        border-color: black;
+    }
+
+#dopravaIkona {
+    background-image: url(/doktori/Images/Frontify/Bosch-IC-back-right-darkgray.png), url(/Images/Frontify/Bosch-IC-back-right-darkgray.png);
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+}
+
+    #dopravaIkona:hover {
+        background-image: url(/doktori/Images/Frontify/Bosch-IC-back-left.png), url(/Images/Frontify/Bosch-IC-back-right.png);
+        background-position-y: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+    }
+
+.dopravaIkonaNapoveda {
+    width: 130px;
+    height: 60px;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid black;
+    position: absolute;
+    top: 810px;
+    right: 70px;
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+
+    .dopravaIkonaNapoveda:after {
+        content: " ";
+        position: absolute;
+        bottom: 30%; /* At the top of the tooltip */
+        left: 100%;
+        margin-right: 0px;
+        border-width: 15px;
+        border-style: solid;
+        border-color: transparent transparent transparent black;
+    }
+
+
+
