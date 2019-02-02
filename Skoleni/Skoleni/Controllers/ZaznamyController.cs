@@ -15,13 +15,14 @@ namespace Skoleni.Controllers
 
         public ZaznamyController(DB context)
         {
-            ViewData["adminVolba"] = 4;
+            ViewData["adminVolba"] = 5;
             _context = context;
         }
 
         // GET: Zaznamy
         public async Task<IActionResult> Index()
         {
+            ViewData["adminVolba"] = 5;
             var dB = _context.seznamZaznamu.Include(z => z.termin).Include(z => z.uzivatel);
             return View(await dB.ToListAsync());
         }
@@ -29,6 +30,7 @@ namespace Skoleni.Controllers
         // GET: Zaznamy/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewData["adminVolba"] = 5;
             if (id == null)
             {
                 return NotFound();
@@ -49,6 +51,7 @@ namespace Skoleni.Controllers
         // GET: Zaznamy/Create
         public IActionResult Create()
         {
+            ViewData["adminVolba"] = 5;
             ViewData["idTerminu"] = new SelectList(_context.seznamTerminu, "idTerminu", "idTerminu");
             ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele");
             return View();
@@ -61,6 +64,7 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam)
         {
+            ViewData["adminVolba"] = 5;
             if (ModelState.IsValid)
             {
                 _context.Add(zaznam);
@@ -75,6 +79,7 @@ namespace Skoleni.Controllers
         // GET: Zaznamy/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewData["adminVolba"] = 5;
             if (id == null)
             {
                 return NotFound();
@@ -97,6 +102,7 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam)
         {
+            ViewData["adminVolba"] = 5;
             if (id != zaznam.idZaznamu)
             {
                 return NotFound();
@@ -130,6 +136,7 @@ namespace Skoleni.Controllers
         // GET: Zaznamy/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewData["adminVolba"] = 5;
             if (id == null)
             {
                 return NotFound();
@@ -152,6 +159,7 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            ViewData["adminVolba"] = 5;
             var zaznam = await _context.seznamZaznamu.FindAsync(id);
             _context.seznamZaznamu.Remove(zaznam);
             await _context.SaveChangesAsync();
