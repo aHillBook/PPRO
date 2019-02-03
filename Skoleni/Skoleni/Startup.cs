@@ -46,8 +46,8 @@ namespace Skoleni
 
             services.AddDbContext<DB> (options => options.UseSqlServer(connection));
 
-            services.AddScoped<JazykyFiltr>();
-            services.AddScoped<TerminyFiltr>();
+            services.AddScoped<AdminFiltr>();
+            services.AddScoped<SpravceFiltr>();
 
             services.AddSession();
 

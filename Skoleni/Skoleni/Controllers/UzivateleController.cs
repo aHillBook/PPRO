@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Skoleni.ActionFilters;
 using Skoleni.Models;
 using Skoleni.Services;
 using Skoleni.ViewModels;
@@ -21,6 +22,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Uzivatele
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Index(int? stranka)
         {
             ViewData["adminVolba"] = 5;
@@ -34,6 +36,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Uzivatele/Details/5
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["adminVolba"] = 5;
@@ -54,6 +57,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Uzivatele/Create
+        [ServiceFilter(typeof(AdminFiltr))]
         public IActionResult Create()
         {
             ViewData["adminVolba"] = 5;
@@ -66,6 +70,7 @@ namespace Skoleni.Controllers
         // POST: Uzivatele/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ServiceFilter(typeof(AdminFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka")] Uzivatel uzivatel)
@@ -82,6 +87,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Uzivatele/Edit/5
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewData["adminVolba"] = 5;
@@ -106,6 +112,7 @@ namespace Skoleni.Controllers
         // POST: Uzivatele/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ServiceFilter(typeof(AdminFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka")] Uzivatel uzivatel)
@@ -143,6 +150,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Uzivatele/Delete/5
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Delete(int? id)
         {
             ViewData["adminVolba"] = 5;
@@ -163,6 +171,7 @@ namespace Skoleni.Controllers
         }
 
         // POST: Uzivatele/Delete/5
+        [ServiceFilter(typeof(AdminFiltr))]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

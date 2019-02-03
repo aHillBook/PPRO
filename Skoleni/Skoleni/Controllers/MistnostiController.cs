@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Skoleni.ActionFilters;
 using Skoleni.Models;
 
 namespace Skoleni.Controllers
@@ -19,6 +20,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Mistnosti
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Index()
         {
             ViewData["adminVolba"] = 2;
@@ -26,6 +28,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Mistnosti/Details/5
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["adminVolba"] = 2;
@@ -45,6 +48,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Mistnosti/Create
+        [ServiceFilter(typeof(SpravceFiltr))]
         public IActionResult Create()
         {
             ViewData["adminVolba"] = 2;
@@ -56,6 +60,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Create([Bind("idMistnosti,nazev,kapacita")] Mistnost mistnost)
         {
             ViewData["adminVolba"] = 2;
@@ -69,6 +74,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Mistnosti/Edit/5
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewData["adminVolba"] = 2;
@@ -90,6 +96,7 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Edit(int id, [Bind("idMistnosti,nazev,kapacita")] Mistnost mistnost)
         {
             ViewData["adminVolba"] = 2;
@@ -122,6 +129,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Mistnosti/Delete/5
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Delete(int? id)
         {
             ViewData["adminVolba"] = 2;
@@ -143,6 +151,7 @@ namespace Skoleni.Controllers
         // POST: Mistnosti/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             ViewData["adminVolba"] = 2;

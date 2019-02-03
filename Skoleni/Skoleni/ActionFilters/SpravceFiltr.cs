@@ -7,11 +7,11 @@ using System.Linq;
 
 namespace Skoleni.ActionFilters
 {
-    public class JazykyFiltr : ActionFilterAttribute, IActionFilter
+    public class SpravceFiltr : ActionFilterAttribute, IActionFilter
     {
         private readonly DB _context;
 
-        public JazykyFiltr(DB context)
+        public SpravceFiltr(DB context)
         {
             _context = context;
         }
@@ -26,14 +26,14 @@ namespace Skoleni.ActionFilters
                 POpravneni po = _context.seznamOpravneni.Where(b => b.idUzivatele == idUzivatele).FirstOrDefault();
                 if (po != null)
                 {
-                    if (po.idRole == 1)
+                    if (po.idRole == 2 || po.idRole == 1)
                     {
                         povoleno = true;
                     }
                 }
             }
 
-            if (!povoleno)
+            if(!povoleno)
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary

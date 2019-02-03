@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Skoleni.ActionFilters;
 using Skoleni.Models;
 using Skoleni.Services;
 using Skoleni.ViewModels;
@@ -18,6 +19,7 @@ namespace Skoleni.Controllers
         {
             _context = context;
         }
+
         public async Task<IActionResult> Prehled(int? idMesice, int? idRoku)
         {
             ViewData["mainVolba"] = 1;
