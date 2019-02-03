@@ -10,6 +10,7 @@ namespace Skoleni.Models
     {
         [Key]
         public int idJazyka { get; set; }
+        [Required(ErrorMessage = "Vyplňte název")]
         public string nazev { get; set; }
     }
 }

@@ -67,17 +67,18 @@ namespace Skoleni.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam)
         {
+            int idSkoleni = 0;
             ViewData["adminVolba"] = 7;
             if (ModelState.IsValid)
             {
+                idSkoleni = _context.seznamTerminu.Where(d => d.idTerminu == zaznam.idTerminu).Select(d => d.idSkoleni).FirstOrDefault();
                 zaznam.datumPrihlaseni = DateTime.Now;
                 _context.Add(zaznam);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { @idSkoleni = idSkoleni });
             }
-            ViewData["idTerminu"] = new SelectList(_context.seznamTerminu, "idTerminu", "idTerminu", zaznam.idTerminu);
-            ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", zaznam.idUzivatele);
-            return View(zaznam);
+            ZaznamViewModel vm = await ZaznamyServ.getZaznamBlankViewModel(_context, idSkoleni);
+            return View(vm);
         }
 
         // GET: Zaznamy/Edit/5
@@ -166,7 +167,7 @@ namespace Skoleni.Controllers
             var zaznam = await _context.seznamZaznamu.FindAsync(id);
             _context.seznamZaznamu.Remove(zaznam);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { @idSkoleni = _context.seznamTerminu.Where(d => d.idTerminu == zaznam.idTerminu).Select(d => d.idSkoleni) });
         }
 
         private bool ZaznamExists(int id)

@@ -80,7 +80,7 @@ namespace Skoleni.Controllers
             ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", termin.idJazyka);
             ViewData["idMistnosti"] = new SelectList(_context.seznamMistnosti, "idMistnosti", "idMistnosti", termin.idMistnosti);
             ViewData["idSkoleni"] = new SelectList(_context.seznamSkoleni, "idSkoleni", "idSkoleni", termin.idSkoleni);
-            return View(termin);
+            return View(TerminyServ.getTerminBlankViewModel(_context));
         }
 
         // GET: Terminy/Edit/5
@@ -139,7 +139,7 @@ namespace Skoleni.Controllers
             ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", termin.idJazyka);
             ViewData["idMistnosti"] = new SelectList(_context.seznamMistnosti, "idMistnosti", "idMistnosti", termin.idMistnosti);
             ViewData["idSkoleni"] = new SelectList(_context.seznamSkoleni, "idSkoleni", "idSkoleni", termin.idSkoleni);
-            return View(termin);
+            return View(TerminyServ.getTerminFillViewModel(_context, termin));
         }
 
         // GET: Terminy/Delete/5

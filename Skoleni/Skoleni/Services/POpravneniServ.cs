@@ -47,7 +47,6 @@ namespace Skoleni.Services
             vm.idUzivatele = opravneni.idUzivatele;
             vm.opravneni.uzivatel =  context.seznamUzivatelu
                 .FirstOrDefault(m => m.idUzivatele == opravneni.idUzivatele);
-            vm.opravneni.uzivatel.jmeno = vm.opravneni.uzivatel.jmeno + " " + vm.opravneni.uzivatel.prijmeni;
 
             var kolekceRoli = context.seznamRoli.OrderBy(a => a.nazev).Select(b => new { Id = b.idRole, Value = b.nazev });
             vm.seznamRoli = new SelectList(kolekceRoli, "Id", "Value");

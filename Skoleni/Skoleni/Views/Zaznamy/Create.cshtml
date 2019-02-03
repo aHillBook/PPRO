@@ -37,14 +37,16 @@
                     <select asp-for="zaznam.idUzivatele" asp-items="@Model.seznamUzivatelu" class="textPole">
                         <option>Vyberte prosím uživatele...</option>
                     </select>
-                    <span asp-validation-for="zaznam.idUzivatele" class="text-danger"></span>
                 </div>
-            </div>
-            <div id="tlacitkaPopisku">
-                <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
-                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
-            </div>
-        </form>
+                <div class="mN">
+                    <span asp-validation-for="zaznam.idUzivatele" style="color:red;" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div id="tlacitkaPopisku">
+                    <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
+                    <a asp-action="Index" asp-route-idSkoleni="@Model.idSkoleni" class="tlacitkoReset">Zpět</a>
+                </div>
+</form>
     </div>
 </div>
 

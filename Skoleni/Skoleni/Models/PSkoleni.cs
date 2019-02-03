@@ -10,7 +10,9 @@ namespace Skoleni.Models
     {
         [Key]
         public int idSkoleni { get; set; }
+        [Required(ErrorMessage = "Vyplňte název")]
         public string nazev { get; set; }
+        [Required(ErrorMessage = "Vyplňte popis")]
         public string popis { get; set; }
 
     }

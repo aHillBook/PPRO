@@ -12,6 +12,8 @@ namespace Skoleni.Models
         public int idTerminu { get; set; }
         [DisplayFormat(DataFormatString = @"{0:dd\.MM\.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime terminKonani { get; set; }
+        [Required(ErrorMessage = "Vyplňte kapacitu")]
+        [Range(1, 600, ErrorMessage = "Doba trvání musí být větší jak 0")]
         public int dobaTrvani { get; set; }
 
         public int idJazyka { get; set; }

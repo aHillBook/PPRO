@@ -75,7 +75,7 @@ namespace Skoleni.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ServiceFilter(typeof(AdminFiltr))]
-        public async Task<IActionResult> Create([Bind("idUzivatele,idRole")] POpravneni pOpravneni)
+        public async Task<IActionResult> Create([Bind("idUzivatele,idRole")] POpravneniViewModel pOpravneni)
         {
             ViewData["adminVolba"] = 6;
             if (ModelState.IsValid)
@@ -86,7 +86,7 @@ namespace Skoleni.Controllers
             }
             ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
             ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
-            return View(pOpravneni);
+            return View(POpravneniServ.getOpravneniBlankViewModel(_context));
         }
 
         // GET: POpravneni/Edit/5
@@ -150,7 +150,7 @@ namespace Skoleni.Controllers
             }
             ViewData["idUzivatele"] = new SelectList(_context.seznamUzivatelu, "idUzivatele", "idUzivatele", pOpravneni.idUzivatele);
             ViewData["idRole"] = new SelectList(_context.seznamUzivatelu, "idRole", "idRole", pOpravneni.idRole);
-            return View(pOpravneni);
+            return View(POpravneniServ.getOpravneniFillViewModel(_context, pOpravneni));
         }
 
         // GET: POpravneni/Delete/5

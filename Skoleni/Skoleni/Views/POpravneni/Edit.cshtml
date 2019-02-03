@@ -27,7 +27,6 @@
                 </div>
                 <div class="mD">
                     <input asp-for="opravneni.uzivatel.jmenoPrijmeni" class="textPole" readonly="readonly" />
-                    <span asp-validation-for="opravneni.uzivatel.jmenoPrijmeni" class="text-danger"></span>
                 </div>
             </div>
             <div>
@@ -38,10 +37,12 @@
                     <select asp-for="idRole" asp-items="@Model.seznamRoli" class="textPole">
                         <option>Vyberte prosím oprávnění...</option>
                     </select>
-                    <span asp-validation-for="idRole" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="idRole" style="color:red;"></span>
+                    </div>
                 </div>
             </div>
-            <div id="tlacitkaPopisku">
+            <div id="tlacitkaPopisku" style="margin-top:20px">
                 <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
                 <a asp-action="Index" class="tlacitkoReset">Zpět</a>
             </div>

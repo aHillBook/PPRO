@@ -72,3 +72,19 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery.datetimepicker.setLocale('cs');
+
+        $(document).on('mousemove', "#termin_terminKonani", function () {
+            //alert("ahoj");
+            $('#termin_terminKonani').datetimepicker({
+                format: 'd.m.Y',
+                timepicker: false,
+            });
+        });
+
+
+    });
+
+</script>

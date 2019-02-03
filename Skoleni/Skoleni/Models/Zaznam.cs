@@ -10,7 +10,9 @@ namespace Skoleni.Models
     {
         [Key]
         public int idZaznamu { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage ="Vyberte termín")]
         public int idTerminu { get; set; }
+        [Range(1, int.MaxValue)]
         public int idUzivatele { get; set; }
         public DateTime datumPrihlaseni { get; set; }
 

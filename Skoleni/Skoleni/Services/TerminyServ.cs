@@ -23,6 +23,7 @@ namespace Skoleni.Services
             TerminViewModel vm = new TerminViewModel();
 
             vm.termin = new Termin();
+            vm.termin.terminKonani = DateTime.Now;
 
             var kolekceSkoleni = context.seznamSkoleni.OrderBy(a => a.nazev).Select(b => new { Id = b.idSkoleni, Value = b.nazev });
             vm.seznamSkoleni = new SelectList(kolekceSkoleni, "Id", "Value");

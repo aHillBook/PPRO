@@ -26,10 +26,21 @@
                 </div>
                 <div class="mD">
                     <input asp-for="nazev" class="textPole" />
-                    <span asp-validation-for="nazev" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="nazev" style="color:red;"></span>
+                    </div>
+                </div>
+                <div class="mN">
+                    <label asp-for="kapacita">Kapacita</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="kapacita" class="textPole" />
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="kapacita" style="color:red;"></span>
+                    </div>
                 </div>
             </div>
-            <div id="tlacitkaPopisku">
+            <div id="tlacitkaPopisku" style="margin-top:20px">
                 <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
                 <a asp-action="Index" class="tlacitkoReset">Zpět</a>
             </div>

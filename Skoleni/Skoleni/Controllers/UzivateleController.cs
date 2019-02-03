@@ -79,8 +79,8 @@ namespace Skoleni.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", uzivatel.idJazyka);
-            return View(uzivatel);
+            UzivatelViewModel vm = UzivateleServ.getUzivatelBlankViewModel(_context);
+            return View(vm);
         }
 
         // GET: Uzivatele/Edit/5
