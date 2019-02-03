@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Skoleni.Models;
 using Microsoft.EntityFrameworkCore;
+using Skoleni.ActionFilters;
 
 namespace Skoleni
 {
@@ -44,6 +45,9 @@ namespace Skoleni
             var connection = @"Data Source=JH0SQL01.emea.bosch.com; Database=C:\PPRO\SKOLENIDB2.MDF;Trusted_Connection=True;ConnectRetryCount=0";
 
             services.AddDbContext<DB> (options => options.UseSqlServer(connection));
+
+            services.AddScoped<JazykyFiltr>();
+            services.AddScoped<TerminyFiltr>();
 
             services.AddSession();
 

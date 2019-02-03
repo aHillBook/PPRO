@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Skoleni.ActionFilters;
 using Skoleni.Models;
 using Skoleni.Services;
 using Skoleni.ViewModels;
@@ -21,6 +22,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Terminy
+        [ServiceFilter(typeof(TerminyFiltr))]
         public async Task<IActionResult> Index()
         {
             ViewData["adminVolba"] = 4;
@@ -29,6 +31,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Terminy/Details/5
+        [ServiceFilter(typeof(TerminyFiltr))]
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["adminVolba"] = 4;
@@ -51,6 +54,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Terminy/Create
+        [ServiceFilter(typeof(TerminyFiltr))]
         public IActionResult Create()
         {
             ViewData["adminVolba"] = 4;
@@ -61,6 +65,7 @@ namespace Skoleni.Controllers
         // POST: Terminy/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ServiceFilter(typeof(TerminyFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idTerminu,terminKonani,dobaTrvani,idJazyka,idSkoleni,idMistnosti")] Termin termin)
@@ -79,6 +84,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Terminy/Edit/5
+        [ServiceFilter(typeof(TerminyFiltr))]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewData["adminVolba"] = 4;
@@ -99,6 +105,7 @@ namespace Skoleni.Controllers
         // POST: Terminy/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [ServiceFilter(typeof(TerminyFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idTerminu,terminKonani,dobaTrvani,idJazyka,idSkoleni,idMistnosti")] Termin termin)
@@ -136,6 +143,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Terminy/Delete/5
+        [ServiceFilter(typeof(TerminyFiltr))]
         public async Task<IActionResult> Delete(int? id)
         {
             ViewData["adminVolba"] = 4;
@@ -158,6 +166,7 @@ namespace Skoleni.Controllers
         }
 
         // POST: Terminy/Delete/5
+        [ServiceFilter(typeof(TerminyFiltr))]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
