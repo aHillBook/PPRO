@@ -21,16 +21,16 @@ namespace Skoleni.Services
 
             return vm;
         }
-        public static ZaznamViewModel getZaznamBlankViewModel(DB context, int idSkoleni)
+        public async static Task<ZaznamViewModel> getZaznamBlankViewModel(DB context, int idSkoleni)
         {
             ZaznamViewModel vm = new ZaznamViewModel();
 
             vm.zaznam = new Zaznam();
             
-            var kolekceTerminu = context.seznamTerminu.Where(d=>d.idSkoleni == idSkoleni).OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.skoleni.nazev + " - " + b.mistnost.nazev + " - " + b.terminKonani});
+            var kolekceTerminu = await context.seznamTerminu.Where(d=>d.idSkoleni == idSkoleni).OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.skoleni.nazev + " - " + b.mistnost.nazev + " - " + b.terminKonani}).ToListAsync();
             vm.seznamTerminu = new SelectList(kolekceTerminu, "Id", "Value");
 
-            var kolekceUzivatelu = context.seznamUzivatelu.OrderBy(a => a.prijmeni).Select(b => new { Id = b.idUzivatele, Value = b.prijmeni + " " + b.jmeno });
+            var kolekceUzivatelu = await context.seznamUzivatelu.OrderBy(a => a.prijmeni).Select(b => new { Id = b.idUzivatele, Value = b.prijmeni + " " + b.jmeno }).ToListAsync();
             vm.seznamUzivatelu = new SelectList(kolekceUzivatelu, "Id", "Value");
 
             return vm;

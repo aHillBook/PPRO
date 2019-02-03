@@ -13,7 +13,6 @@ namespace Skoleni.Controllers
 {
     public class ZaznamyController : Controller
     {
-        int IDskoleni;
         private readonly DB _context;
 
         public ZaznamyController(DB context)
@@ -27,7 +26,6 @@ namespace Skoleni.Controllers
         {
             if (idSkoleni == 0) idSkoleni = 1;
 
-            IDskoleni = idSkoleni; 
             ViewData["adminVolba"] = 7;
             var vm = await ZaznamyServ.getSeznamZaznamuSkoleniViewModel(_context, idSkoleni);
 
@@ -55,10 +53,10 @@ namespace Skoleni.Controllers
         }
 
         // GET: Zaznamy/Create
-        public IActionResult Create([Bind("idSkoleni")]int idSkoleni)
+        public async Task<IActionResult> Create(int id)
         {
             ViewData["adminVolba"] = 7;
-            ZaznamViewModel vm = ZaznamyServ.getZaznamBlankViewModel(_context, IDskoleni);
+            ZaznamViewModel vm = await ZaznamyServ.getZaznamBlankViewModel(_context, id);
             return View(vm);
         }
 
