@@ -15,6 +15,7 @@
     color: #000;
     /*font-family: "Bosch Office Sans","Helvetica Neue",Helvetica,Arial,sans-serif;*/
     font-family: 'Segoe UI';
+    overflow-x: hidden;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
@@ -537,7 +538,8 @@ obrazek::after {
 }
 
     .paticka::after {
-        position: absolute;
+        position: fixed;
+        z-index: -1;
         left: 0;
         width: 100%;
         height: 16px;

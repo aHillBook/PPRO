@@ -2,8 +2,11 @@
 
 @model DenViewModel
 
+<link href="~/css/den.css" rel="stylesheet" type="text/css" />
 <link href="~/css/Kalendar/seznam.css" rel="stylesheet" type="text/css" />
 <script src="~/js/kalendar/seznam.js"></script>
+
+
 
 <div class="pozadiUvodu">
     <div class="pozadi-fialova-tmaveModra">
@@ -17,4 +20,54 @@
 </div>
 <div class="seznamPolozek">
 
+    <div>
+        @{
+            int poradi = 1;
+            foreach (var termin in Model.terminy)
+            {
+                if (poradi == 1)
+                {
+                    <input id="@("tab" + poradi)" type="radio" name="tabs" checked>
+                }
+                else
+                {
+                    <input id="@("tab" + poradi)" type="radio" name="tabs">
+                }
+                <label for="@("tab" + poradi)">@termin.skoleni.nazev</label>
+                poradi++;
+            }
+        }
+  
+        @{
+            poradi = 1;
+            foreach (var termin in Model.terminy)
+            {
+                var pocetPrihlasek = Model.d.zaznamy.Where(z => z.termin.idTerminu == termin.idTerminu).ToList().Count;
+                string styl = termin.mistnost.kapacita <= pocetPrihlasek ? "style=color:red;" : "";
+
+                <section id="@("content" + poradi)">
+                    <h2>@termin.skoleni.nazev</h2>
+                    <p>@termin.mistnost.nazev</p>
+                    <p>Jazyk: @termin.jazyk.nazev</p>
+                    <p>Kapacita: @termin.mistnost.kapacita</p>
+                    <p @styl>Přihlášeno: @pocetPrihlasek </p>
+
+                    @if (termin.mistnost.kapacita > pocetPrihlasek)
+                    {
+                        <a asp-action="Prihlasit" asp-route-id="@termin.idTerminu" class="tlacitkoPouzit">Přihlásit</a>
+                    }
+                </section>
+                poradi++;
+
+
+
+            }
+        }
+  
+    </div>
 </div>
+
+<div id="zpet">
+    <div id="zpetIkona"></div>
+</div>
+<div class="zpetIkonaNapoveda">Zpet na seznam kurzů</div>

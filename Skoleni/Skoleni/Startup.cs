@@ -48,6 +48,7 @@ namespace Skoleni
 
             services.AddScoped<AdminFiltr>();
             services.AddScoped<SpravceFiltr>();
+            services.AddScoped<PrihlasenFiltr>();
 
             services.AddSession();
 
@@ -76,7 +77,9 @@ namespace Skoleni
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+                        defaults: new { controller = "Home", action = "Index" }
+                );
             });
 
         }

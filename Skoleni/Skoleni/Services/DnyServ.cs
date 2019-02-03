@@ -1,4 +1,5 @@
-﻿using Skoleni.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Skoleni.Models;
 using Skoleni.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,20 @@ namespace Skoleni.Services
             return vm;
         }
 
-        public static DenViewModel getDenViewModel(DateTime datum)
+        public static DenViewModel getDenViewModel(DateTime datum, DB context)
         {
             DenViewModel vm = new DenViewModel();
 
             Den d = new Den();
             d.datum = datum;
+
+
+            vm.terminy = context.seznamTerminu.Include(t => t.jazyk).Include(t => t.mistnost).Include(t => t.skoleni).Where(t => t.terminKonani.Equals(d.datum)).ToList();
+            var idTerminu = vm.terminy.Select(tm => tm.idTerminu).ToList();
+            var seznamId = string.Join(",", idTerminu.Select(n => n.ToString()).ToArray());
+
+            d.zaznamy = context.seznamZaznamu.Include(z => z.termin).Where(a => seznamId.Contains(a.idTerminu.ToString())).ToList();
+
             vm.d = d;
 
             //vm.seznam = new List<Den>();

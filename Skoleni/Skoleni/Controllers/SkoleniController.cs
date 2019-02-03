@@ -20,7 +20,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Skoleni
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Index()
         {
             ViewData["adminVolba"] = 3;
@@ -28,7 +28,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Skoleni/Details/5
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["adminVolba"] = 3;
@@ -57,7 +57,7 @@ namespace Skoleni.Controllers
         // POST: Skoleni/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idSkoleni,nazev,popis,skolitel")] Models.PSkoleni skoleni)
@@ -73,7 +73,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Skoleni/Edit/5
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewData["adminVolba"] = 3;
@@ -93,7 +93,7 @@ namespace Skoleni.Controllers
         // POST: Skoleni/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idSkoleni,nazev,popis,skolitel")] Models.PSkoleni skoleni)
@@ -128,7 +128,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Skoleni/Delete/5
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         public async Task<IActionResult> Delete(int? id)
         {
             ViewData["adminVolba"] = 3;
@@ -148,7 +148,7 @@ namespace Skoleni.Controllers
         }
 
         // POST: Skoleni/Delete/5
-        [ServiceFilter(typeof(AdminFiltr))]
+        [ServiceFilter(typeof(SpravceFiltr))]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -1,0 +1,58 @@
+﻿@using Skoleni.ViewModels
+@model Termin
+
+<div class="pozadiUvodu">
+    <div class="pozadi-fialova-tmaveModra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                @if (ViewData["jizPrihlasen"].Equals("x"))
+                {
+                    <h1 class="nadpis-blok-h1">Jste již přihlášen</h1>
+                }
+                else
+                {
+                    <h1 class="nadpis-blok-h1">Přihlášení na termín</h1>
+                }
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Prihlasit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="terminKonani">Termín konání</label>
+                    <input type="hidden" asp-for="idTerminu" />
+                </div>
+                <div class="mD">@Model.terminKonani</div>
+
+                <div class="mN">
+                    <label asp-for="skoleni">Školení</label>
+                </div>
+                <div class="mD">@Model.skoleni.nazev</div>
+
+                <div class="mN">
+                    <label asp-for="mistnost">Místnost</label>
+                </div>
+                <div class="mD">@Model.mistnost.nazev</div>
+
+                <div class="mN">
+                    <label asp-for="dobaTrvani">Doba trvání(min)</label>
+                </div>
+                <div class="mD">@Model.dobaTrvani</div>
+
+            </div>
+            <div id="tlacitkaPopisku" style="margin-top:20px">
+                @if (!ViewData["jizPrihlasen"].Equals("x"))
+                {
+                    <button type="submit" value="Prihlasit" class="tlacitkoPouzit">Potvrdit</button>
+                }
+                    <a asp-action="Prehled" class="tlacitkoReset">Zpět</a>
+                </div>
+        </form>
+    </div>
+</div>
