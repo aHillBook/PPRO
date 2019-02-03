@@ -18,7 +18,7 @@
 
 <div id="shortBlok">
     <div style="padding: 10px;">
-        <form asp-action="Create">
+        <form asp-action="Create" asp-route-idSkoleni="@Model.idSkoleni">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
                 <div class="mN">
@@ -28,7 +28,9 @@
                     <select asp-for="zaznam.idTerminu" asp-items="@Model.seznamTerminu" class="textPole">
                         <option>Vyberte prosím termín...</option>
                     </select>
-                    <span asp-validation-for="zaznam.idTerminu" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="zaznam.idTerminu" style="color:red;"></span>
+                    </div>
                 </div>
                 <div class="mN">
                     <label asp-for="@Model.seznamUzivatelu">Uživatel</label>
@@ -37,16 +39,16 @@
                     <select asp-for="zaznam.idUzivatele" asp-items="@Model.seznamUzivatelu" class="textPole">
                         <option>Vyberte prosím uživatele...</option>
                     </select>
-                </div>
-                <div class="mN">
-                    <span asp-validation-for="zaznam.idUzivatele" style="color:red;" data-valmsg-replace="true"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="zaznam.idUzivatele" style="color:red;"></span>
                     </div>
                 </div>
-                <div id="tlacitkaPopisku">
+                <div id="tlacitkaPopisku" style="margin-top:20px">
                     <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
                     <a asp-action="Index" asp-route-idSkoleni="@Model.idSkoleni" class="tlacitkoReset">Zpět</a>
                 </div>
-</form>
+            </div>
+        </form>
     </div>
 </div>
 

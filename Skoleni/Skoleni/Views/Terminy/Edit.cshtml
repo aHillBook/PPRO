@@ -27,7 +27,9 @@
                 </div>
                 <div class="mD">
                     <input asp-for="termin.terminKonani" class="textPole" />
-                    <span asp-validation-for="termin.terminKonani" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="termin.terminKonani" style="color:red;"></span>
+                    </div>
                 </div>
                 <div class="mN">
                     <label asp-for="seznamSkoleni">Školení</label>
@@ -36,7 +38,9 @@
                     <select asp-for="termin.idSkoleni" asp-items="@Model.seznamSkoleni" class="textPole">
                         <option>Vyberte prosím školení...</option>
                     </select>
-                    <span asp-validation-for="termin.idSkoleni" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="termin.idSkoleni" style="color:red;"></span>
+                    </div>
                 </div>
                 <div class="mN">
                     <label asp-for="seznamSkoleni">Místnost</label>
@@ -45,14 +49,18 @@
                     <select asp-for="termin.idMistnosti" asp-items="@Model.seznamMistnosti" class="textPole">
                         <option>Vyberte prosím místnost...</option>
                     </select>
-                    <span asp-validation-for="termin.idMistnosti" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="termin.idMistnosti" style="color:red;"></span>
+                    </div>
                 </div>
                 <div class="mN">
                     <label asp-for="termin.dobaTrvani">Doba trvání(min)</label>
                 </div>
                 <div class="mD">
                     <input asp-for="termin.dobaTrvani" class="textPole" />
-                    <span asp-validation-for="termin.dobaTrvani" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="termin.dobaTrvani" style="color:red;"></span>
+                    </div>
                 </div>
                 <div class="mN">
                     <label asp-for="seznamJazyku">Jazyk</label>
@@ -61,10 +69,12 @@
                     <select asp-for="termin.idJazyka" asp-items="@Model.seznamJazyku" class="textPole">
                         <option>Vyberte prosím jazyk...</option>
                     </select>
-                    <span asp-validation-for="termin.idJazyka" class="text-danger"></span>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="termin.idJazyka" style="color:red;"></span>
+                    </div>
                 </div>
             </div>
-            <div id="tlacitkaPopisku">
+            <div id="tlacitkaPopisku" style="margin-top:20px">
                 <button type="submit" value="Create" class="tlacitkoPouzit">Odeslat</button>
                 <a asp-action="Index" class="tlacitkoReset">Zpět</a>
             </div>

@@ -17,6 +17,8 @@ namespace Skoleni.Models
         public DateTime datumPrihlaseni { get; set; }
 
         public Termin termin { get; set; }
+        
         public Uzivatel uzivatel { get; set; }
+
     }
 }

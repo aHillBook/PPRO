@@ -28,9 +28,11 @@ namespace Skoleni.Services
 
             vm.zaznam = new Zaznam();
             vm.idSkoleni = idSkoleni;
+            vm.zaznam.termin = context.seznamTerminu.Where(d => d.idSkoleni == idSkoleni).FirstOrDefault();
             vm.nazevSkoleni = await context.seznamSkoleni.Where(d => d.idSkoleni == idSkoleni).Select(d=>d.nazev).FirstOrDefaultAsync();
             var kolekceTerminu = await context.seznamTerminu.Where(d=>d.idSkoleni == idSkoleni).OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.terminKonani.ToShortDateString() + " - " + b.mistnost.nazev }).ToListAsync();
             vm.seznamTerminu = new SelectList(kolekceTerminu, "Id", "Value");
+            //vm.zaznam.terminySkoleni = context.seznamTerminu.Where(d => d.idSkoleni == idSkoleni).ToList();
 
             var kolekceUzivatelu = await context.seznamUzivatelu.OrderBy(a => a.prijmeni).Select(b => new { Id = b.idUzivatele, Value = b.prijmeni + " " + b.jmeno }).ToListAsync();
             vm.seznamUzivatelu = new SelectList(kolekceUzivatelu, "Id", "Value");

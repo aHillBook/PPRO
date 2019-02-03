@@ -65,13 +65,11 @@ namespace Skoleni.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam)
+        public async Task<IActionResult> Create([Bind("idZaznamu,idTerminu,idUzivatele,datumPrihlaseni")] Zaznam zaznam, int idSkoleni)
         {
-            int idSkoleni = 0;
             ViewData["adminVolba"] = 7;
             if (ModelState.IsValid)
             {
-                idSkoleni = _context.seznamTerminu.Where(d => d.idTerminu == zaznam.idTerminu).Select(d => d.idSkoleni).FirstOrDefault();
                 zaznam.datumPrihlaseni = DateTime.Now;
                 _context.Add(zaznam);
                 await _context.SaveChangesAsync();

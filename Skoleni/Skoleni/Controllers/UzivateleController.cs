@@ -70,7 +70,7 @@ namespace Skoleni.Controllers
         [ServiceFilter(typeof(AdminFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka")] Uzivatel uzivatel)
+        public async Task<IActionResult> Create([Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka,nt,heslo")] Uzivatel uzivatel)
         {
             ViewData["adminVolba"] = 5;
             if (ModelState.IsValid)
@@ -112,15 +112,13 @@ namespace Skoleni.Controllers
         [ServiceFilter(typeof(AdminFiltr))]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka")] Uzivatel uzivatel)
+        public async Task<IActionResult> Edit(int id, [Bind("idUzivatele,jmeno,prijmeni,stredisko,email,idJazyka,nt,heslo")] Uzivatel uzivatel)
         {
             ViewData["adminVolba"] = 5;
             if (id != uzivatel.idUzivatele)
             {
                 return NotFound();
             }
-            uzivatel.heslo = _context.seznamUzivatelu.Where(d => d.idUzivatele == uzivatel.idUzivatele).Select(d => d.heslo).FirstOrDefault();
-            uzivatel.nt = _context.seznamUzivatelu.Where(d => d.idUzivatele == uzivatel.idUzivatele).Select(d => d.nt).FirstOrDefault();
             
             if (ModelState.IsValid)
             {
@@ -142,8 +140,8 @@ namespace Skoleni.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["idJazyka"] = new SelectList(_context.seznamJazyku, "idJazyka", "idJazyka", uzivatel.idJazyka);
-            return View(uzivatel);
+            
+            return View(UzivateleServ.getUzivatelFillViewModel(_context, uzivatel));
         }
 
         // GET: Uzivatele/Delete/5
