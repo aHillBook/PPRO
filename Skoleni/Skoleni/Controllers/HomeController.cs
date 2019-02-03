@@ -61,6 +61,12 @@ namespace Skoleni.Controllers
                 {
                     HttpContext.Session.SetString("userName", uzivatel.prijmeni + " " + uzivatel.jmeno);
                     HttpContext.Session.SetInt32("userId", uzivatel.idUzivatele);
+                    var opravneni = await _context.seznamOpravneni.Include(o => o.role).FirstAsync(p => p.idUzivatele == uzivatel.idUzivatele);
+                    if (opravneni != null)
+                    {
+                        HttpContext.Session.SetString("userRole", opravneni.role.nazev);
+                        HttpContext.Session.SetInt32("roleId", opravneni.role.idRole);
+                    }
                     return Redirect("Index");
                 }
             }
