@@ -27,10 +27,7 @@ namespace Skoleni.Controllers
         {
             ViewData["adminVolba"] = 5;
 
-            var vm = UzivateleServ.getSeznamUzivateluViewModel(_context, stranka);
-
-            var dB = _context.seznamUzivatelu.Include(u => u.jazyk);
-            //return View(await dB.ToListAsync());
+            var vm = await UzivateleServ.getSeznamUzivateluViewModel(_context, stranka);
 
             return View(vm);
         }

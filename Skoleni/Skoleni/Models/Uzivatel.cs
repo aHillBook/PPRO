@@ -21,5 +21,14 @@ namespace Skoleni.Models
 
         public string nt { get; set; }
         public string heslo { get; set; }
+
+        public string jmenoPrijmeni
+        {
+            get
+            {
+                return jmeno + " " + prijmeni;
+            }
+            
+        }
     }
 }

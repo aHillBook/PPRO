@@ -1,39 +1,49 @@
-﻿@model Skoleni.Models.Zaznam
+﻿@using Skoleni.Models;
+@model Zaznam
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Zaznam</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.datumPrihlaseni)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.datumPrihlaseni)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.termin)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.termin.idTerminu)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.uzivatel)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.uzivatel.idUzivatele)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="idZaznamu" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="pozadiUvodu">
+    <div class="pozadi-zeleno-zelena">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Vymazání uživatele</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
 </div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <input type="hidden" asp-for="idZaznamu" />
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.jmenoPrijmeni">Jméno a příjmení</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.jmenoPrijmeni" class="textPole" readonly="readonly" />
+                    <span asp-validation-for="uzivatel.jmenoPrijmeni" class="text-danger"></span>
+                </div>
+                <div class="mN">
+                    <label asp-for="termin.terminKonani">Termín</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="termin.terminKonani" class="textPole" readonly="readonly" />
+                    <span asp-validation-for="termin.terminKonani" class="text-danger"></span>
+                </div>
+            </div>
+            <div id="tlacitkaPopisku">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Smazat</button>
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>
+

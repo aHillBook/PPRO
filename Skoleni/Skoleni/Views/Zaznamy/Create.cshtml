@@ -9,7 +9,7 @@
     <div class="pozadi-ruzovo-fialova">
         <div class="nadpis">
             <div class="nadpis-blok">
-                <h1 class="nadpis-blok-h1">Nový termín</h1>
+                <h1 class="nadpis-blok-h1">Nový termín - @Model.nazevSkoleni</h1>
             </div>
         </div>
         <div class="vyvysenyBod"></div>
@@ -21,9 +21,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
-                <div class="mN">
-                    <label asp-for="zaznam.termin.skoleni.nazev">Školení</label>
-                </div>
                 <div class="mN">
                     <label asp-for="@Model.seznamTerminu">Termín</label>
                 </div>

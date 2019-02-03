@@ -54,7 +54,6 @@ namespace Skoleni.Controllers
                 .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
                 pOpravneni.role = await _context.seznamRoli
                     .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
-                pOpravneni.uzivatel.jmeno = pOpravneni.uzivatel.jmeno + " " + pOpravneni.uzivatel.prijmeni;
                 pOpravneni.idRole = pOpravneni.role.idRole;
                 pOpravneni.idUzivatele = pOpravneni.uzivatel.idUzivatele;
             }
@@ -177,7 +176,6 @@ namespace Skoleni.Controllers
                 .FirstOrDefaultAsync(m => m.idUzivatele == pOpravneni.idUzivatele);
                 pOpravneni.role = await _context.seznamRoli
                     .FirstOrDefaultAsync(m => m.idRole == pOpravneni.idRole);
-                pOpravneni.uzivatel.jmeno = pOpravneni.uzivatel.jmeno + " " + pOpravneni.uzivatel.prijmeni;
                 pOpravneni.idRole = pOpravneni.role.idRole;
                 pOpravneni.idUzivatele = pOpravneni.uzivatel.idUzivatele;
             }

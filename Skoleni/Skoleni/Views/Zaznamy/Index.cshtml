@@ -54,22 +54,19 @@
             {
                 <tr id="hlavniRadek">
                     <td>
-                        @Html.DisplayFor(modelItem => item.termin.skoleni.nazev)
+                        @Html.DisplayFor(modelItem => Model.nazevSkoleni)
                     </td>
 
                     <td>
                         @Html.DisplayFor(modelItem => item.termin.terminKonani)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.uzivatel.jmeno)
+                        @Html.DisplayFor(modelItem => item.uzivatel.jmenoPrijmeni)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.datumPrihlaseni)
                     </td>
                     <td style="display: flex; margin-top:-1px;padding-top:10px;">
-                        <div id="edit">
-                            <a asp-action="Edit" asp-route-id="@Model.idSkoleni"><div id="editIkona"></div></a>
-                        </div>
                         <div id="delete">
                             <a asp-action="Delete" asp-route-id="@item.idZaznamu"><div id="deleteIkona"></div></a>
                         </div>

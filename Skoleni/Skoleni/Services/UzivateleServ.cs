@@ -12,12 +12,12 @@ namespace Skoleni.Services
 {
     public static class UzivateleServ
     {
-        public static UzivatelViewModel getSeznamUzivateluViewModel(DB context, int? stranka)
+        public static async Task<UzivatelViewModel> getSeznamUzivateluViewModel(DB context, int? stranka)
         {
             UzivatelViewModel vm = new UzivatelViewModel();
 
 
-            vm.seznamUzivatelu = context.seznamUzivatelu.Include(u => u.jazyk).ToList();
+            vm.seznamUzivatelu = await context.seznamUzivatelu.Include(u => u.jazyk).ToListAsync();
 
             var poradi = stranka ?? 1;
 

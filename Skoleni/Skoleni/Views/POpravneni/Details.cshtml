@@ -24,12 +24,12 @@
                 <input type="hidden" asp-for="idRole" />
             </div>
             <div class="mN">
-                <label asp-for="uzivatel.jmeno">Jméno</label>
+                <label asp-for="uzivatel.jmenoPrijmeni">Jméno a příjmení</label>
             </div>
             <div class="detailBlok">
                 <div class="detailSEditem">
                     <div class="mD">
-                        <input asp-for="uzivatel.jmeno" class="textPole" readonly="readonly" />
+                        <input asp-for="uzivatel.jmenoPrijmeni" class="textPole" readonly="readonly" />
                     </div>
                     <div id="edit">
                         <a asp-action="Edit" asp-route-id="@Model.idUzivatele"><div id="editIkona"></div></a>

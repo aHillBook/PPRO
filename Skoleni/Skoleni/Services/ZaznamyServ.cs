@@ -15,6 +15,7 @@ namespace Skoleni.Services
         {
             ZaznamViewModel vm = new ZaznamViewModel();
             vm.idSkoleni = idSkoleni;
+            vm.nazevSkoleni = await context.seznamSkoleni.Where(d => d.idSkoleni == idSkoleni).Select(d => d.nazev).FirstOrDefaultAsync();
             vm.zaznamy = await context.seznamZaznamu.Where(d=>d.termin.idSkoleni == idSkoleni).Include(z => z.termin).Include(z => z.uzivatel).ToListAsync();
             var kolekceSkoleni = context.seznamSkoleni.OrderBy(a => a.nazev).Select(b => new { Id = b.idSkoleni, Value = b.nazev });
             vm.seznamSkoleni = new SelectList(kolekceSkoleni, "Id", "Value");
@@ -26,8 +27,9 @@ namespace Skoleni.Services
             ZaznamViewModel vm = new ZaznamViewModel();
 
             vm.zaznam = new Zaznam();
-            
-            var kolekceTerminu = await context.seznamTerminu.Where(d=>d.idSkoleni == idSkoleni).OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.skoleni.nazev + " - " + b.mistnost.nazev + " - " + b.terminKonani}).ToListAsync();
+            vm.idSkoleni = idSkoleni;
+            vm.nazevSkoleni = await context.seznamSkoleni.Where(d => d.idSkoleni == idSkoleni).Select(d=>d.nazev).FirstOrDefaultAsync();
+            var kolekceTerminu = await context.seznamTerminu.Where(d=>d.idSkoleni == idSkoleni).OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.terminKonani.ToShortDateString() + " - " + b.mistnost.nazev }).ToListAsync();
             vm.seznamTerminu = new SelectList(kolekceTerminu, "Id", "Value");
 
             var kolekceUzivatelu = await context.seznamUzivatelu.OrderBy(a => a.prijmeni).Select(b => new { Id = b.idUzivatele, Value = b.prijmeni + " " + b.jmeno }).ToListAsync();
@@ -42,7 +44,7 @@ namespace Skoleni.Services
 
             vm.zaznam = zaznam;
 
-            var kolekceTerminu = context.seznamTerminu.OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.skoleni.nazev + " - " + b.mistnost.nazev + " - " + b.terminKonani });
+            var kolekceTerminu = context.seznamTerminu.OrderBy(a => a.terminKonani).Select(b => new { Id = b.idTerminu, Value = b.terminKonani.ToShortDateString() + " - " + b.mistnost.nazev });
             vm.seznamTerminu = new SelectList(kolekceTerminu, "Id", "Value");
 
             var kolekceUzivatelu = context.seznamUzivatelu.OrderBy(a => a.prijmeni).Select(b => new { Id = b.idUzivatele, Value = b.prijmeni + " " + b.jmeno });

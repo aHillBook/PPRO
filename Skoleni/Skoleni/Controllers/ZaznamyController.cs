@@ -70,6 +70,7 @@ namespace Skoleni.Controllers
             ViewData["adminVolba"] = 7;
             if (ModelState.IsValid)
             {
+                zaznam.datumPrihlaseni = DateTime.Now;
                 _context.Add(zaznam);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

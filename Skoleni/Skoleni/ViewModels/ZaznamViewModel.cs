@@ -17,5 +17,6 @@ namespace Skoleni.ViewModels
         public SelectList seznamSkoleni { get; set; }
 
         public int idSkoleni { get; set; }
+        public string nazevSkoleni { get; set; }
     }
 }
