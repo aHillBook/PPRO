@@ -109,6 +109,14 @@
                                     {
                                         <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Prihlasky")">Seznam přihlášek</a></li>
                                     }
+                                    if (ViewData["mainVolba"].ToString().Equals("3"))
+                                    {
+                                        <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Profil")">Můj profil</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Profil")">Můj profil</a></li>
+                                    }
                                 }
 
                             </ul>

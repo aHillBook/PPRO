@@ -1,0 +1,46 @@
+﻿@using Skoleni.ViewModels
+@model Zaznam
+
+<div class="pozadiUvodu">
+    <div class="pozadi-fialova-tmaveModra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">@Model.termin.skoleni.nazev</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok" style="margin-top: 10px;">
+    <div style="padding: 10px;">
+        <form asp-action="Prihlasit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="termin.terminKonani">Termín konání</label>
+                </div>
+                <div class="mD">@Model.termin.terminKonani.ToShortDateString()</div>
+
+                <div class="mN">
+                    <label asp-for="termin.skoleni">Školení</label>
+                </div>
+                <div class="mD">@Model.termin.skoleni.nazev</div>
+
+                <div class="mN">
+                    <label asp-for="termin.mistnost">Místnost</label>
+                </div>
+                <div class="mD">@Model.termin.mistnost.nazev</div>
+
+                <div class="mN">
+                    <label asp-for="termin.dobaTrvani">Doba trvání(min)</label>
+                </div>
+                <div class="mD">@Model.termin.dobaTrvani</div>
+
+            </div>
+            <div id="tlacitkaPopisku" style="margin-top:20px">
+                <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>

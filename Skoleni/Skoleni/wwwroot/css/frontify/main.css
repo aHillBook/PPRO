@@ -325,8 +325,8 @@ nav, ul, li {
     position: absolute;
     left: 50%;
     width: 1px;
-    height: 100px;
-    bottom: -100px;
+    height: 50px;
+    bottom: -50px;
     background-color: #bfc0c2;
 }
 

@@ -5,7 +5,7 @@
     <div class="pozadi-fialova-tmaveModra">
         <div class="nadpis">
             <div class="nadpis-blok">
-                @if (ViewData["jizPrihlasen"].Equals("x"))
+                @if (ViewData["jizPrihlasen"] != null && ViewData["jizPrihlasen"].Equals("x"))
                 {
                     <h1 class="nadpis-blok-h1">Jste již přihlášen</h1>
                 }
@@ -20,7 +20,7 @@
 </div>
 
 <div id="shortBlok">
-    <div style="padding: 10px;">
+    <div style="padding: 10px;margin: 10px;">
         <form asp-action="Prihlasit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div>
@@ -28,7 +28,7 @@
                     <label asp-for="terminKonani">Termín konání</label>
                     <input type="hidden" asp-for="idTerminu" />
                 </div>
-                <div class="mD">@Model.terminKonani</div>
+                <div class="mD">@Model.terminKonani.ToShortDateString()</div>
 
                 <div class="mN">
                     <label asp-for="skoleni">Školení</label>
@@ -47,7 +47,7 @@
 
             </div>
             <div id="tlacitkaPopisku" style="margin-top:20px">
-                @if (!ViewData["jizPrihlasen"].Equals("x"))
+                @if (ViewData["jizPrihlasen"] == null || !ViewData["jizPrihlasen"].Equals("x"))
                 {
                     <button type="submit" value="Prihlasit" class="tlacitkoPouzit">Potvrdit</button>
                 }

@@ -1,0 +1,51 @@
+﻿@using Skoleni.Models;
+@model IEnumerable<Zaznam>
+
+    <div class="pozadiUvodu">
+        <div class="pozadi-cerveno-fialova">
+            <div class="nadpis">
+                <div class="nadpis-blok">
+                    <h1 class="nadpis-blok-h1">Seznam přihlášek</h1>
+                </div>
+            </div>
+            <div class="vyvysenyBod"></div>
+        </div>
+    </div>
+
+    <div class="seznamKmu">
+        <table id="tabulkaKmu">
+            <thead>
+                <tr>
+                    <th>Datum konání</th>
+                    <th>Název</th>
+                    <th>Místnost</th>
+                    <th>Možnosti</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                    {
+                <tr id="hlavniRadek">
+                    <td>
+                        @Html.DisplayFor(a => item.termin.terminKonani)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => item.termin.skoleni.nazev)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(a => item.termin.mistnost.nazev)
+                    </td>
+                    <td style="display: flex; margin-top:-1px;padding-top:10px;">
+                        <div id="detail">
+                            <a asp-action="Details" asp-route-id="@item.idZaznamu"><div id="detailIkona"></div></a>
+                        </div>
+                        <div id="delete">
+                            <a asp-action="Delete" asp-route-id="@item.idZaznamu"><div id="deleteIkona"></div></a>
+                        </div>
+                    </td>
+                </tr>
+                    }
+            </tbody>
+        </table>
+    </div>
+    <div id="odspodu" />
