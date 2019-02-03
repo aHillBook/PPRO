@@ -1,84 +1,67 @@
-﻿@using Skoleni.ViewModels;
-@model ZaznamViewModel
+﻿@model IEnumerable<Skoleni.Models.Zaznam>
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="pozadiUvodu">
-    <div class="pozadi-ruzovo-fialova">
-        <div class="nadpis">
-            <div class="nadpis-blok">
-                <h1 class="nadpis-blok-h1">Seznam záznamů</h1>
-            </div>
-        </div>
-        <div class="vyvysenyBod"></div>
-    </div>
-</div>
+<h2>Index</h2>
 
 <p>
     <div id="novy">
-        <a asp-action="Create" asp-route-id="@Model.idSkoleni"><div id="novyIkona"></div></a>
-        <input type="hidden" name="Direction" value="@Model.idSkoleni" id="fldDirection" />
+        <a asp-action="Create"><div id="novyIkona"></div></a>
+    </div>
+    <div id="kmu">
+        <a asp-action="Index" asp-controller="Home"><div id="kmuIkona"></div></a>
     </div>
 </p>
 
 <div class="seznamKmu">
-    <div>
-        <div class="mN">
-            <label asp-for="@Model.seznamSkoleni">Školení</label>
-        </div>
-        <div class="mD">
-            <form asp-action="Index">
-                <select asp-for="idSkoleni" class="textPole"
-                        asp-items="@Model.seznamSkoleni">
-                    <option>Vyberte prosím školení...</option>
-                </select>
-                <input type="submit" value="Potvrdit" class="tlacitkoPouzitCombobox" />
-            </form>
-        </div>
-    </div>
-    
-    <table id="tabulkaKmu">
+
+    <table class="table">
         <thead>
             <tr>
-                <th>Školení</th>
-                <th>Termín</th>
-                <th>Uživatel</th>
-                <th>Datum přihlášení</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.datumPrihlaseni)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.termin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.uzivatel)
+                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.zaznamy)
+            @foreach (var item in Model)
             {
-                <tr id="hlavniRadek">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.termin.skoleni.nazev)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.termin.terminKonani)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.uzivatel.jmeno)
-                    </td>
+                <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.datumPrihlaseni)
                     </td>
-                    <td style="display: flex; margin-top:-1px;padding-top:10px;">
-                        <div id="edit">
-                            <a asp-action="Edit" asp-route-id="@item.idZaznamu"><div id="editIkona"></div></a>
-                        </div>
-                        <div id="delete">
-                            <a asp-action="Delete" asp-route-id="@item.idZaznamu"><div id="deleteIkona"></div></a>
-                        </div>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.termin.idTerminu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.uzivatel.idUzivatele)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.idZaznamu">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.idZaznamu">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.idZaznamu">Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
+<div id="odspodu" />
 <div class="novyIkonaNapoveda">
-    Přidat záznam
+    Přidat nový záznam
 </div>
+
+<div class="kmuIkonaNapoveda">
+    Zpět na hlavní nabídku
+</div>
+
 

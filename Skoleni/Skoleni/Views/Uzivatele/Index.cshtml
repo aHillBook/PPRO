@@ -23,6 +23,9 @@
     <div id="novy">
         <a asp-action="Create"><div id="novyIkona"></div></a>
     </div>
+    <div id="kmu">
+        <a asp-action="Index" asp-controller="Home"><div id="kmuIkona"></div></a>
+    </div>
 </p>
 
 <div class="seznamKmu">
@@ -39,35 +42,35 @@
         <tbody>
             @foreach (var item in Model.strankovanySeznam)
             {
-            <tr id="hlavniRadek">
-                <td>
-                    @Html.DisplayFor(modelItem => item.jmeno)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.prijmeni)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.stredisko)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jazyk.nazev)
-                </td>
-                <td style="display: flex; margin-top:-1px;padding-top:10px;">
-                    <div id="edit">
-                        <a asp-action="Edit" asp-route-id="@item.idUzivatele"><div id="editIkona"></div></a>
-                    </div>
+                <tr id="hlavniRadek">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jmeno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prijmeni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.stredisko)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jazyk.nazev)
+                    </td>
+                    <td style="display: flex; margin-top:-1px;padding-top:10px;">
+                        <div id="edit">
+                            <a asp-action="Edit" asp-route-id="@item.idUzivatele"><div id="editIkona"></div></a>
+                        </div>
 
-                    <div id="detail">
-                        <a asp-action="Details" asp-route-id="@item.idUzivatele"><div id="detailIkona"></div></a>
-                    </div>
-                    <div id="delete">
-                        <a asp-action="Delete" asp-route-id="@item.idUzivatele"><div id="deleteIkona"></div></a>
-                    </div>
-                </td>
-            </tr>
+                        <div id="detail">
+                            <a asp-action="Details" asp-route-id="@item.idUzivatele"><div id="detailIkona"></div></a>
+                        </div>
+                        <div id="delete">
+                            <a asp-action="Delete" asp-route-id="@item.idUzivatele"><div id="deleteIkona"></div></a>
+                        </div>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
@@ -91,4 +94,7 @@
 
 <div class="novyIkonaNapoveda">
     Přidat nového uživatele
+</div>
+<div class="kmuIkonaNapoveda">
+    Zpět na hlavní nabídku
 </div>

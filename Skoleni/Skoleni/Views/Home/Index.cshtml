@@ -1,47 +1,46 @@
-﻿
-
-
-<div class="pozadiUvodu">
-    <div class="pozadi-cerveno-fialova">
+﻿<div class="pozadiUvodu">
+    <div class="pozadi-modro-zelena">
         <div class="nadpis">
             <div class="nadpis-blok">
-                <h1 class="nadpis-blok-h1">Školení</h1>
+                <h1 class="nadpis-blok-h1">Aplikace Školení</h1>
             </div>
         </div>
         <div class="vyvysenyBod"></div>
     </div>
 </div>
 
-
-
-
-<div id="shortBlok">
-    <div style="padding: 10px; margin: 0 auto; text-align: center;">
-
-        <input type="text" id="datepicker" name="asdf" value="" />
-
-
-
+<div class="seznamKmu">
+    <h2>Cíl</h2>
+    <div>
+        Aplikace "Školení" má za cíl umožnit zaměstnancům firmy se přihlašovat na jednotlivé termíny vypsaných typů školení, které jsou nabízeny personálním oddělením firmy.
     </div>
+
+    <h2>Role</h2>
+    <div>
+        <p>Aplikace umožňuje pro nepřihlášené uživatele sledovat vypsané termíny pro jednotlivá školení v kalendáři aplikace.</p>
+        <p>Přihlášený uživatel se na termín školení přihlásit může, pokud je ještě volné místo v daném termínu. V případě, že je přihlášen, ale zúčastnit se nemůže, má možnost se odhlásit.</p>
+        <p>Přihlášený uživatel se na termín školení přihlásit může, pokud je ještě volné místo v daném termínu. V případě, že je přihlášen, ale zúčastnit se nemůže, má možnost se odhlásit.</p>
+    </div>
+
+    <h3>Typ aplikace</h3>
+    <div>
+        Semestrální projekt do předmětu..
+    </div>
+
+    <h3>Tvůrci</h3>
+    <div>
+        <p>Patrik Fišer  (fiserpa1)</p>
+        <p>Karel Kobliha (koblika1)</p>
+    </div>
+
+    <h3>Použité technologie</h3>
+    <div>
+        <p>ASP.NET MVC Core</p>
+        <p>Entity Framework</p>
+        <p>MS SQL Server</p>
+    </div>
+
+
 </div>
-
-
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        jQuery.datetimepicker.setLocale('cs');
-
-        $(document).on('mousemove', "#datepicker", function () {
-            //alert("ahoj");
-            $('#datepicker').datetimepicker({
-                format: 'd.m.Y',
-                timepicker: false,
-            });
-        });
-
-
-    });
-
-</script>
+<div id="odspodu" />
 

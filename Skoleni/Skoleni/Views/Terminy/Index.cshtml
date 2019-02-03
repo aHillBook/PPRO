@@ -19,6 +19,9 @@
     <div id="novy">
         <a asp-action="Create"><div id="novyIkona"></div></a>
     </div>
+    <div id="kmu">
+        <a asp-action="Index" asp-controller="Home"><div id="kmuIkona"></div></a>
+    </div>
 </p>
 
 <div class="seznamKmu">
@@ -35,40 +38,44 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr id="hlavniRadek">
-                <td>
-                    @Html.DisplayFor(modelItem => item.terminKonani)
-                </td>
+                <tr id="hlavniRadek">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.terminKonani)
+                    </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.skoleni.nazev)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.mistnost.nazev)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dobaTrvani)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.jazyk.nazev)
-                </td>
-                <td style="display: flex; margin-top:-1px;padding-top:10px;">
-                    <div id="edit">
-                        <a asp-action="Edit" asp-route-id="@item.idTerminu"><div id="editIkona"></div></a>
-                    </div>
-                    <div id="detail">
-                        <a asp-action="Details" asp-route-id="@item.idTerminu"><div id="detailIkona"></div></a>
-                    </div>
-                    <div id="delete">
-                        <a asp-action="Delete" asp-route-id="@item.idTerminu"><div id="deleteIkona"></div></a>
-                    </div>
-                </td>
-            </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.skoleni.nazev)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.mistnost.nazev)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dobaTrvani)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.jazyk.nazev)
+                    </td>
+                    <td style="display: flex; margin-top:-1px;padding-top:10px;">
+                        <div id="edit">
+                            <a asp-action="Edit" asp-route-id="@item.idTerminu"><div id="editIkona"></div></a>
+                        </div>
+                        <div id="detail">
+                            <a asp-action="Details" asp-route-id="@item.idTerminu"><div id="detailIkona"></div></a>
+                        </div>
+                        <div id="delete">
+                            <a asp-action="Delete" asp-route-id="@item.idTerminu"><div id="deleteIkona"></div></a>
+                        </div>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
 </div>
+<div id="odspodu" />
+
 <div class="novyIkonaNapoveda">
     Přidat termín
 </div>
-
+<div class="kmuIkonaNapoveda">
+    Zpět na hlavní nabídku
+</div>
