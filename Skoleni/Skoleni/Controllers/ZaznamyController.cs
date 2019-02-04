@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Skoleni.ActionFilters;
 using Skoleni.Models;
 using Skoleni.Services;
 using Skoleni.ViewModels;
@@ -22,6 +23,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Zaznamy
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Index(int idSkoleni)
         {
             if (idSkoleni == 0) idSkoleni = 1;
@@ -32,6 +34,7 @@ namespace Skoleni.Controllers
             return View(vm);
         }
         // GET: Zaznamy/Details/5
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Details(int? id)
         {
             ViewData["adminVolba"] = 7;
@@ -53,6 +56,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Zaznamy/Create
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Create(int id)
         {
             ViewData["adminVolba"] = 7;
@@ -80,6 +84,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Zaznamy/Edit/5
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Edit(int? id)
         {
             ViewData["adminVolba"] = 7;
@@ -136,6 +141,7 @@ namespace Skoleni.Controllers
         }
 
         // GET: Zaznamy/Delete/5
+        [ServiceFilter(typeof(AdminFiltr))]
         public async Task<IActionResult> Delete(int? id)
         {
             ViewData["adminVolba"] = 7;

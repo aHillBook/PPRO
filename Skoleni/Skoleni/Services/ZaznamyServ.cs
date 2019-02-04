@@ -16,7 +16,7 @@ namespace Skoleni.Services
             ZaznamViewModel vm = new ZaznamViewModel();
             vm.idSkoleni = idSkoleni;
             vm.nazevSkoleni = await context.seznamSkoleni.Where(d => d.idSkoleni == idSkoleni).Select(d => d.nazev).FirstOrDefaultAsync();
-            vm.zaznamy = await context.seznamZaznamu.Where(d=>d.termin.idSkoleni == idSkoleni).Include(z => z.termin).Include(z => z.uzivatel).ToListAsync();
+            vm.zaznamy = await context.seznamZaznamu.Where(d=>d.termin.idSkoleni == idSkoleni).OrderBy(a => a.termin.terminKonani).Include(z => z.termin).Include(z => z.uzivatel).ToListAsync();
             var kolekceSkoleni = context.seznamSkoleni.OrderBy(a => a.nazev).Select(b => new { Id = b.idSkoleni, Value = b.nazev });
             vm.seznamSkoleni = new SelectList(kolekceSkoleni, "Id", "Value");
 

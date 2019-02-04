@@ -75,7 +75,7 @@ namespace Skoleni.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ServiceFilter(typeof(AdminFiltr))]
-        public async Task<IActionResult> Create([Bind("idUzivatele,idRole")] POpravneniViewModel pOpravneni)
+        public async Task<IActionResult> Create([Bind("idUzivatele,idRole")] POpravneni pOpravneni)
         {
             ViewData["adminVolba"] = 6;
             if (ModelState.IsValid)
