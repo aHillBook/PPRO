@@ -1,15 +1,57 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@using Skoleni.ViewModels
+@model Zaznam
 
-<!DOCTYPE html>
+<div class="pozadiUvodu">
+    <div class="pozadi-fialova-tmaveModra">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Vymazání přihlášky na školení</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Delete</title>
-</head>
-<body>
-</body>
-</html>
+<div id="shortBlok" style="margin-top: 10px;">
+<div style="padding: 10px;">
+    <form asp-action="Delete">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div>
+            <div class="mN">
+                <label asp-for="termin.terminKonani">Název</label>
+            </div>
+            <div class="mD">@Model.termin.skoleni.nazev</div>
+
+            <div class="mN">
+                <label asp-for="termin.terminKonani">Popis</label>
+            </div>
+            <div class="mD">@Model.termin.skoleni.popis</div>
+
+            <div class="mN">
+                <label asp-for="termin.terminKonani">Termín konání</label>
+            </div>
+            <div class="mD">@Model.termin.terminKonani.ToShortDateString()</div>
+
+            <div class="mN">
+                <label asp-for="termin.skoleni">Školení</label>
+            </div>
+            <div class="mD">@Model.termin.skoleni.nazev</div>
+
+            <div class="mN">
+                <label asp-for="termin.mistnost">Místnost</label>
+            </div>
+            <div class="mD">@Model.termin.mistnost.nazev</div>
+
+            <div class="mN">
+                <label asp-for="termin.dobaTrvani">Doba trvání(min)</label>
+            </div>
+            <div class="mD">@Model.termin.dobaTrvani</div>
+
+        </div>
+        <div id="tlacitkaPopisku" style="margin-top:20px">
+            <button type="submit" value="Delete" class="tlacitkoPouzit">Smazat</button>
+            <a asp-action="Index" class="tlacitkoReset">Zpět</a>
+        </div>
+    </form>
+</div>
+</div>

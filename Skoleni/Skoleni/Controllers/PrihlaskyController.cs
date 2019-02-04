@@ -67,8 +67,8 @@ namespace Skoleni.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             ViewData["mainVolba"] = 2;
-            var skoleni = await _context.seznamSkoleni.FindAsync(id);
-            _context.seznamSkoleni.Remove(skoleni);
+            var zaznam = await _context.seznamZaznamu.FindAsync(id);
+            _context.seznamZaznamu.Remove(zaznam);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
