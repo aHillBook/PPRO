@@ -17,7 +17,7 @@
 
 
     $('#adminIkona').click(function () {
-        window.location.href = '../Jazyky/Index';
+        window.location.href = '../Mistnosti/Index';
     });
 
     $('#zpetIkona').click(function () {

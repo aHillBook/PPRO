@@ -60,14 +60,17 @@
                     <div class="blokPrubezny-menu">
                         <nav class="nav-menu">
                             <ul>
+                                @if (idRole == 1)
+                                {
+                                    @if (ViewData["adminVolba"].ToString().Equals("1"))
+                                    {
+                                        <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="vyber-menu-prvek"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
+                                    }
 
-                                @if (ViewData["adminVolba"].ToString().Equals("1"))
-                                {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","jazyky")">Seznam jazyků</a></li>
                                 }
 
                                 @if (ViewData["adminVolba"].ToString().Equals("2"))
@@ -96,32 +99,45 @@
                                 {
                                     <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Terminy")">Seznam termínů</a></li>
                                 }
-                                @if (ViewData["adminVolba"].ToString().Equals("7"))
+
+                                @if (idRole == 1)
                                 {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Zaznamy")">Seznam záznamů</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Zaznamy")">Seznam záznamů</a></li>
-                                }
-                                @if (ViewData["adminVolba"].ToString().Equals("5"))
-                                {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","Uzivatele")">Seznam uživatelů</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","Uzivatele")">Seznam uživatelů</a></li>
-                                }
-                                @if (ViewData["adminVolba"].ToString().Equals("6"))
-                                {
-                                    <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index","POpravneni")">Seznam oprávnění</a></li>
-                                }
-                                else
-                                {
-                                    <li class="vyber-menu-prvek"><a href="@Url.Action("Index","POpravneni")">Seznam oprávnění</a></li>
+                                    @if (ViewData["adminVolba"].ToString().Equals("7"))
+                                    {
+                                        <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index", "Zaznamy")">Seznam záznamů</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="vyber-menu-prvek"><a href="@Url.Action("Index", "Zaznamy")">Seznam záznamů</a></li>
+                                    }
                                 }
 
-                            </ul>
+                                @if (idRole == 1)
+                                {
+
+                                    @if (ViewData["adminVolba"].ToString().Equals("5"))
+                                    {
+                                        <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index", "Uzivatele")">Seznam uživatelů</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="vyber-menu-prvek"><a href="@Url.Action("Index", "Uzivatele")">Seznam uživatelů</a></li>
+                                    }
+                                }
+
+                                @if (idRole == 1)
+                                {
+                                    @if (ViewData["adminVolba"].ToString().Equals("6"))
+                                    {
+                                        <li class="vyber-menu-prvek vyber-menu-prvek-vybran"><a href="@Url.Action("Index", "POpravneni")">Seznam oprávnění</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="vyber-menu-prvek"><a href="@Url.Action("Index", "POpravneni")">Seznam oprávnění</a></li>
+                                    }
+                                }
+
+                                </ul>
                         </nav>
                     </div>
                 </div>
