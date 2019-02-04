@@ -1,0 +1,93 @@
+﻿@using Skoleni.ViewModels;
+@model UzivatelViewModel
+
+<div class="pozadiUvodu">
+    <div class="pozadi-zeleno-zelena">
+        <div class="nadpis">
+            <div class="nadpis-blok">
+                <h1 class="nadpis-blok-h1">Editace uživatele</h1>
+            </div>
+        </div>
+        <div class="vyvysenyBod"></div>
+    </div>
+</div>
+
+<div id="shortBlok">
+    <div style="padding: 10px;">
+        <form asp-action="Index">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="mN">
+                    <label asp-for="uzivatel.jmeno">Jméno</label>
+                    <input type="hidden" asp-for="uzivatel.idUzivatele" />
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.jmeno" class="textPole" />
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="uzivatel.jmeno" style="color:red;"></span>
+                    </div>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.prijmeni">Příjmení</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.prijmeni" class="textPole" />
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="uzivatel.prijmeni" style="color:red;"></span>
+                    </div>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.stredisko">Středisko</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.stredisko" class="textPole" />
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.email">E-mail</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.email" class="textPole" />
+                </div>
+                <div class="mN">
+                    <label asp-for="seznamJazyku">Jazyk uživatele</label>
+                </div>
+                <div class="mD">
+                    <select asp-for="uzivatel.idJazyka" asp-items="@Model.seznamJazyku" class="textPole">
+                        <option>Vyberte prosím jazyk...</option>
+                    </select>
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="uzivatel.idJazyka" style="color:red;"></span>
+                    </div>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.nt">Uživatelské jméno</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.nt" class="textPole" />
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="uzivatel.nt" style="color:red;"></span>
+                    </div>
+                </div>
+                <div class="mN">
+                    <label asp-for="uzivatel.heslo">Heslo</label>
+                </div>
+                <div class="mD">
+                    <input asp-for="uzivatel.heslo" class="textPole" />
+                    <div style="margin-top:-15px">
+                        <span asp-validation-for="uzivatel.heslo" style="color:red;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tlacitkaPopisku" style="margin-top:20px">
+                <button type="submit" value="Create" class="tlacitkoPouzit">Uložit</button>
+                <a asp-action="Index" asp-controller="Home" class="tlacitkoReset">Zpět</a>
+            </div>
+            <div>
+                <div class="mN" style="color:green;">
+                    @ViewBag.uspesne
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
