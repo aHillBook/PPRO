@@ -51,7 +51,7 @@
                         </td>*@
                     <td class="volno">
                         <div class="podkladTerminy">
-                            Volných míst: @den.pocetVolnychMist
+                            Počet kurzů: @den.terminy.Count
                             <a href="@Url.Action("Den", "Kurzy", new { datum = den.datum })">
                                 <div class="podkladCisloDne">
                                     <span>@den.datum.Day</span>

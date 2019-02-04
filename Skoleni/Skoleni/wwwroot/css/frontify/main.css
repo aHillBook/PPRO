@@ -535,6 +535,7 @@ obrazek::after {
     left:0;
     right:0;
     height:16px;
+    z-index: 50;
 }
 
     .paticka::after {
