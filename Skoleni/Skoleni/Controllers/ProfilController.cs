@@ -24,7 +24,7 @@ namespace Skoleni.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["mainVolba"] = 3;
-            int idUzivatele = (int)HttpContext.Session.GetInt32("roleId");
+            int idUzivatele = (int)HttpContext.Session.GetInt32("userId");
             if (idUzivatele == 0)
             {
                 return NotFound();
